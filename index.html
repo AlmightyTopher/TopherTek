@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Service Dashboard</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="script.js" defer></script>
+</head>
+<body>
+  <div class="service-directory">
+    <h1>Service Directory</h1>
+
+    <!-- Search Bar -->
+    <div class="search-bar">
+      <input type="text" id="serviceSearch" placeholder="Search services...">
+    </div>
+
+    <!-- Table -->
+    <table class="service-table">
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>Service</th>
+          <th>Category</th>
+          <th>Status</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody id="serviceTable">
+        <!-- Services will be dynamically loaded here -->
+      </tbody>
+    </table>
+  </div>
+</body>
+</html>
