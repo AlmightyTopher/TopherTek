@@ -31,26 +31,21 @@ IF %ERRORLEVEL% NEQ 0 (
 echo ===================================
 echo   ⏳ Waiting for Cloudflare Deployment
 echo ===================================
-timeout /t 10 >nul
+timeout /t 15 >nul
 
-:: Clear browser cache (for Chrome & Edge)
-echo Clearing browser cache...
-RunDll32.exe InetCpl.cpl,ClearMyTracksByProcess 8
-ipconfig /flushdns
-
-:: Open website in browser
-echo Opening website...
+:: Open website and auto-refresh in the default browser
+echo Opening updated website...
 start "" "https://tophertek.pages.dev"
 
-:: Open Cloudflare Pages dashboard
+:: OPTIONAL: Open Cloudflare Pages dashboard to monitor the deployment
 echo Opening Cloudflare dashboard...
 start "" "https://dash.cloudflare.com/"
 
-:: Open GitHub repository
+:: OPTIONAL: Open GitHub repository to verify updates
 echo Opening GitHub repository...
 start "" "https://github.com/AlmightyTopher/TopherTek"
 
-:: Play notification sound
+:: Play notification sound to alert you that it's done
 echo 
 echo ===================================
 echo   ✅ Website Updated Successfully!
