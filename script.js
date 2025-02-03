@@ -45,7 +45,7 @@ async function getDecryptedToken() {
 }
 
 // Audiobookshelf API Base URL
-const AUDIOSHELF_API_BASE = "https://audiobookshelf.tophersnet.site/api";
+const AUDIOSHELF_API_BASE = "https://audiobookshelf.tophertek.com/api";
 
 // Fetch Audiobookshelf status
 async function fetchAudiobookshelfStatus(apiToken) {
@@ -73,10 +73,10 @@ async function populateTable() {
 
   const tableBody = document.getElementById("serviceTable");
   const services = [
-    { id: 1, name: "Audiobook Library", url: "https://audiobookshelf.tophersnet.site", icon: "audiobookshelf", category: "Media", api: true },
-    { id: 2, name: "SABnzbd", url: "https://sabnzbd.tophersnet.site", icon: "sabnzbd", category: "Downloads" },
-    { id: 3, name: "Radarr", url: "https://radarr.tophersnet.site", icon: "radarr", category: "Media" },
-    { id: 4, name: "Sonarr", url: "https://sonarr.tophersnet.site", icon: "sonarr", category: "Media" }
+    { id: 1, name: "Audiobook Library", url: "https://audiobookshelf.tophertek.com", icon: "audiobookshelf", category: "Media", api: true },
+    { id: 2, name: "SABnzbd", url: "https://sabnzbd.tophertek.com", icon: "sabnzbd", category: "Downloads" },
+    { id: 3, name: "Radarr", url: "https://radarr.tophertek.com", icon: "radarr", category: "Media" },
+    { id: 4, name: "Sonarr", url: "https://sonarr.tophertek.com", icon: "sonarr", category: "Media" }
   ];
 
   for (const service of services) {
