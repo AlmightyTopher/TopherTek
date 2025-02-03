@@ -1,1 +1,33 @@
+name: Verify & Purge Cloudflare Cache
+
+on:
+  push:
+    branches:
+      - main  # Change this if your default branch is different
+
+jobs:
+  verify-and-purge:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Verify Cloudflare API Token
+        run: |
+          RESPONSE=$(curl -s -o response.json -w "%{http_code}" -X GET "https://api.cloudflare.com/client/v4/user/tokens/verify" \
+            -H "Authorization: Bearer ${{ secrets.CLOUDFLARE_API_TOKEN }}" \
+            -H "Content-Type: application/json")
+          
+          if [ "$RESPONSE" -ne 200 ]; then
+            echo "Cloudflare API Token is invalid!"
+            cat response.json
+            exit 1
+          else
+            echo "Cloudflare API Token is valid!"
+          fi
+
+      - name: Purge Cloudflare Cache
+        run: |
+          curl -X POST "https://api.cloudflare.com/client/v4/zones/${{ secrets.CLOUDFLARE_ZONE_ID }}/purge_cache" \
+          -H "Authorization: Bearer ${{ secrets.CLOUDFLARE_API_TOKEN }}" \
+          -H "Content-Type: application/json" \
+          --data '{"purge_everything":true}'
 
