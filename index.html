@@ -10,15 +10,19 @@
     <style>
         /* Hidden Admin Button */
         .admin-btn {
-            display: none;
+            display: block;
             position: absolute;
             right: 10px;
             top: 10px;
             background-color: transparent;
-            color: transparent;
+            color: gray;
             border: none;
             cursor: pointer;
             transition: background-color 0.3s, color 0.3s;
+        }
+
+        .admin-btn.show {
+            color: transparent;
         }
 
         .admin-btn:hover {
@@ -26,8 +30,9 @@
             color: #fff;
         }
 
-        .admin-btn.show {
-            display: block;
+        .admin-btn.clickable {
+            color: #fff;
+            background-color: #333;
         }
     </style>
 </head>
@@ -77,7 +82,7 @@
             </div>
         </div>
     </section>
-    <button class="admin-btn" id="adminBtn" onclick="window.location.href='https://tophertek.com/admin'">Admin</button>
+    <button class="admin-btn" id="adminBtn">Admin</button>
     <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
     <script>
       AOS.init({offset:0});
@@ -141,13 +146,15 @@
 
         adminBtn.addEventListener('mouseover', () => {
             hoverTimer = setTimeout(() => {
-                adminBtn.classList.add('show');
+                adminBtn.classList.add('clickable');
+                adminBtn.onclick = () => window.location.href = 'https://tophertek.com/admin';
             }, 15000); // 15 seconds
         });
 
         adminBtn.addEventListener('mouseout', () => {
             clearTimeout(hoverTimer);
-            adminBtn.classList.remove('show');
+            adminBtn.classList.remove('clickable');
+            adminBtn.onclick = null;
         });
     </script>
 </body>
