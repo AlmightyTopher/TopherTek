@@ -14,10 +14,23 @@ IF %ERRORLEVEL% NEQ 0 (
     exit /b %ERRORLEVEL%
 )
 
-:: Add all changes and commit
-echo Adding and committing changes...
+:: Add all changes
+echo Adding changes...
 git add .
+IF %ERRORLEVEL% NEQ 0 (
+    echo ❌ ERROR: Git add failed.
+    pause
+    exit /b %ERRORLEVEL%
+)
+
+:: Commit changes
+echo Committing changes...
 git commit -m "Auto-update website"
+IF %ERRORLEVEL% NEQ 0 (
+    echo ❌ ERROR: Git commit failed. No changes to commit.
+    pause
+    exit /b %ERRORLEVEL%
+)
 
 :: Push changes to GitHub
 echo Pushing changes to GitHub...

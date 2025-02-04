@@ -1,14 +1,22 @@
 {
   "name": "website",
   "version": "1.0.0",
-  "main": "Node.js",
+  "description": "A placeholder package for the website",
+  "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AlmightyTopher/TopherTek.git"
+  },
   "keywords": [],
-  "author": "",
+  "author": "Topher Tek <TopherTek@hotmail.com>",
   "license": "ISC",
-  "description": "",
+  "bugs": {
+    "url": "https://github.com/AlmightyTopher/TopherTek/issues"
+  },
+  "homepage": "https://github.com/AlmightyTopher/TopherTek#readme",
   "dependencies": {
     "crypto": "^1.0.1",
     "fs": "^0.0.1-security"
