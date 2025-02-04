@@ -13,8 +13,11 @@
 
     <!-- Search Bar -->
     <div class="search-bar">
-      <label for="serviceSearch" class="visually-hidden">Search Services</label>
-      <input type="text" id="serviceSearch" placeholder="Search services...">
+      <form action="https://www.google.com/search" method="get">
+        <label for="serviceSearch" class="visually-hidden">Search Services</label>
+        <input type="text" id="serviceSearch" name="q" placeholder="Search services...">
+        <button type="submit">Search</button>
+      </form>
     </div>
 
     <!-- Table -->
@@ -23,16 +26,3 @@
         <tr>
           <th>#</th>
           <th>Service</th>
-          <th>Category</th>
-          <th>Status</th>
-          <th>Actions</th>
-        </tr>
-      </thead>
-      <tbody id="serviceTable">
-        <!-- Services will be dynamically loaded here -->
-      </tbody>
-    </table>
-  </div>
-</body>
-  <!-- Updated -->
-</html>
