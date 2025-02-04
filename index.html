@@ -8,21 +8,16 @@
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
     <style>
-        /* Hidden Admin Button */
-        .admin-btn {
-            display: block;
-            position: absolute;
-            right: 10px;
-            top: 10px;
-            background-color: transparent;
+        /* Hidden Admin Link */
+        .admin-link {
             color: gray;
-            border: none;
-            cursor: pointer;
-            transition: background-color 0.3s, color 0.3s;
+            pointer-events: none;
+            transition: color 0.3s, background-color 0.3s;
         }
 
-        .admin-btn.clickable {
+        .admin-link.clickable {
             color: #fff;
+            pointer-events: auto;
             background-color: #333;
         }
     </style>
@@ -40,6 +35,7 @@
                 <div class="link" data-aos="fade-up" data-aos-duration="500" data-aos-delay="400"><a href="https://tophertek.com/services" aria-label="Services">Services</a></div>
                 <div class="link" data-aos="fade-up" data-aos-duration="500" data-aos-delay="500"><a href="https://tophertek.com/blogs" aria-label="Blogs">Blogs</a></div>
                 <div class="link contact-btn" data-aos="fade-up" data-aos-duration="500" data-aos-delay="600"><a href="https://tophertek.com/contact-us" aria-label="Contact Us">Contact Us</a></div>
+                <div class="link admin-link" data-aos="fade-up" data-aos-duration="500" data-aos-delay="700"><a href="https://tophertek.com/admin" aria-label="Admin" id="adminLink">Admin</a></div>
             </div>
             <i class="fa-solid fa-bars hamburg" onclick="hamburg()" aria-label="Open Menu"></i>
         </div>
@@ -51,6 +47,7 @@
                 <a href="https://tophertek.com/services" aria-label="Services">Services</a>
                 <a href="https://tophertek.com/blogs" aria-label="Blogs">Blogs</a>
                 <a href="https://tophertek.com/contact-us" aria-label="Contact Us">Contact Us</a>
+                <a href="https://tophertek.com/admin" aria-label="Admin" class="admin-link" id="adminLink">Admin</a>
                 <i class="fa-solid fa-xmark cancel" onclick="cancel()" aria-label="Close Menu"></i>
             </div>
         </div>
@@ -73,7 +70,6 @@
             </div>
         </div>
     </section>
-    <button class="admin-btn" id="adminBtn">Admin</button>
     <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
     <script>
       AOS.init({offset:0});
@@ -131,21 +127,19 @@
             setTimeout(typePhrase, 1000);
         });
 
-        // Admin button hover effect
-        const adminBtn = document.getElementById('adminBtn');
+        // Admin link hover effect
+        const adminLink = document.getElementById('adminLink');
         let hoverTimer;
 
-        adminBtn.addEventListener('mouseover', () => {
+        adminLink.addEventListener('mouseover', () => {
             hoverTimer = setTimeout(() => {
-                adminBtn.classList.add('clickable');
-                adminBtn.onclick = () => window.location.href = 'https://tophertek.com/admin';
+                adminLink.classList.add('clickable');
             }, 15000); // 15 seconds
         });
 
-        adminBtn.addEventListener('mouseout', () => {
+        adminLink.addEventListener('mouseout', () => {
             clearTimeout(hoverTimer);
-            adminBtn.classList.remove('clickable');
-            adminBtn.onclick = null;
+            adminLink.classList.remove('clickable');
         });
     </script>
 </body>
