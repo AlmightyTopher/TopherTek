@@ -7,6 +7,29 @@
     <title>TopherTek</title>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+    <style>
+        /* Hidden Admin Button */
+        .admin-btn {
+            display: none;
+            position: absolute;
+            right: 10px;
+            top: 10px;
+            background-color: transparent;
+            color: transparent;
+            border: none;
+            cursor: pointer;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        .admin-btn:hover {
+            background-color: #333;
+            color: #fff;
+        }
+
+        .admin-btn.show {
+            display: block;
+        }
+    </style>
 </head>
 <body>
     <nav>
@@ -54,9 +77,78 @@
             </div>
         </div>
     </section>
+    <button class="admin-btn" id="adminBtn" onclick="window.location.href='https://tophertek.com/admin'">Admin</button>
     <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
     <script>
-        AOS.init({offset:0});
+      AOS.init({offset:0});
+    </script>
+    <script>
+        function hamburg(){
+            const navbar = document.querySelector(".dropdown")
+            navbar.style.transform = "translateY(0px)"
+        }
+        function cancel(){
+            const navbar = document.querySelector(".dropdown")
+            navbar.style.transform = "translateY(-500px)"
+        }
+
+        // Typewriter effect
+        const phrases = ["Web Developer", "Graphic Designer", "Content Creator", "Tech Enthusiast"]; // Updated phrases
+        let currentPhraseIndex = 0;
+        const typewriterText = document.getElementById("typewriter-text");
+
+        function typePhrase() {
+            const phrase = phrases[currentPhraseIndex];
+            let currentCharIndex = 0;
+
+            function typeChar() {
+                if (currentCharIndex < phrase.length) {
+                    typewriterText.textContent += phrase.charAt(currentCharIndex);
+                    currentCharIndex++;
+                    setTimeout(typeChar, 100);
+                } else {
+                    setTimeout(erasePhrase, 2000);
+                }
+            }
+
+            typeChar();
+        }
+
+        function erasePhrase() {
+            let currentCharIndex = typewriterText.textContent.length;
+
+            function eraseChar() {
+                if (currentCharIndex > 0) {
+                    typewriterText.textContent = typewriterText.textContent.slice(0, -1);
+                    currentCharIndex--;
+                    setTimeout(eraseChar, 50);
+                } else {
+                    currentPhraseIndex = (currentPhraseIndex + 1) % phrases.length;
+                    setTimeout(typePhrase, 500);
+                }
+            }
+
+            eraseChar();
+        }
+
+        document.addEventListener("DOMContentLoaded", () => {
+            setTimeout(typePhrase, 1000);
+        });
+
+        // Admin button hover effect
+        const adminBtn = document.getElementById('adminBtn');
+        let hoverTimer;
+
+        adminBtn.addEventListener('mouseover', () => {
+            hoverTimer = setTimeout(() => {
+                adminBtn.classList.add('show');
+            }, 15000); // 15 seconds
+        });
+
+        adminBtn.addEventListener('mouseout', () => {
+            clearTimeout(hoverTimer);
+            adminBtn.classList.remove('show');
+        });
     </script>
     <script src="script.js"></script>
 </body>
