@@ -109,3 +109,6 @@ async function populateTable() {
 
 // Run the function on page load
 document.addEventListener("DOMContentLoaded", populateTable);
+
+const websiteUrl = "https://tophertek.com";
+console.log(websiteUrl);
