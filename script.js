@@ -47,4 +47,9 @@ document.addEventListener("DOMContentLoaded", () => {
           adminLink.style.display = "none";
       }
   }
+
+  // Force Desktop Viewport Fix
+  if (window.innerWidth > 1024) {
+      document.body.classList.add("desktop-view");
+  }
 });
