@@ -215,6 +215,7 @@ section {
     margin: 5px 10px;
     font-size: 1.5rem;
     transition: 0.2s linear;
+    object-fit: cover; /* Ensure images fit within the circle */
 }
 
 .social-links img {
