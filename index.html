@@ -3,30 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css">
+    <meta name="description" content="TopherTek - Solving tech problems, developing innovative solutions, and helping businesses with IT and web development.">
+    <meta name="keywords" content="tech, web development, IT solutions, cloud, coding">
+    <meta property="og:title" content="TopherTek">
+    <meta property="og:description" content="Solving tech problems and developing innovative IT solutions.">
+    <meta property="og:image" content="https://tophertek.com/preview.png">
+    <meta property="og:url" content="https://tophertek.com">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self' https:; script-src 'self' https://unpkg.com;">
+    <meta http-equiv="X-Content-Type-Options" content="nosniff">
+    <meta http-equiv="Strict-Transport-Security" content="max-age=31536000; includeSubDomains">
     <title>TopherTek</title>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
-    <link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <link rel="shortcut icon" href="/favicon.ico" />
-    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
-    <meta name="apple-mobile-web-app-title" content="TopherTek" />
-    <link rel="manifest" href="/site.webmanifest" />
-    <style>
-        /* Hidden Admin Link */
-        .admin-link {
-            color: gray;
-            pointer-events: none;
-            transition: color 0.3s, background-color 0.3s;
-        }
-
-        .admin-link.clickable {
-            color: #fff;
-            pointer-events: auto;
-            background-color: #333;
-        }
-    </style>
+    <script defer src="script.js"></script>
 </head>
 <body>
     <nav>
@@ -35,118 +24,40 @@
                 <span>TopherTek</span>
             </div>
             <div class="links">
-                <div class="link" data-aos="fade-up" data-aos-duration="300" data-aos-delay="100"><a href="https://tophertek.com/home" aria-label="Home">Home</a></div>
-                <div class="link" data-aos="fade-up" data-aos-duration="300" data-aos-delay="200"><a href="https://tophertek.com/about" aria-label="About">About</a></div>
-                <div class="link" data-aos="fade-up" data-aos-duration="300" data-aos-delay="300"><a href="https://tophertek.com/skills" aria-label="Skills">Skills</a></div>
-                <div class="link" data-aos="fade-up" data-aos-duration="300" data-aos-delay="400"><a href="https://tophertek.com/services" aria-label="Services">Services</a></div>
-                <div class="link" data-aos="fade-up" data-aos-duration="300" data-aos-delay="500"><a href="https://tophertek.com/blogs" aria-label="Blogs">Blogs</a></div>
-                <div class="link contact-btn" data-aos="fade-up" data-aos-duration="300" data-aos-delay="600"><a href="https://tophertek.com/contact-us" aria-label="Contact Us">Contact Us</a></div>
-                <div class="link admin-link" data-aos="fade-up" data-aos-duration="300" data-aos-delay="700"><a href="https://tophertek.com/admin" aria-label="Admin" id="adminLink">Admin</a></div>
+                <a href="/home">Home</a>
+                <a href="/about">About</a>
+                <a href="/skills">Skills</a>
+                <a href="/services">Services</a>
+                <a href="/blogs">Blogs</a>
+                <a href="/contact-us" class="contact-btn">Contact Us</a>
+                <a href="/admin" class="admin-link" id="adminLink">Admin</a>
             </div>
-            <i class="fa-solid fa-bars hamburg" onclick="hamburg()" aria-label="Open Menu"></i>
-        </div>
-        <div class="dropdown">
-            <div class="links">
-                <a href="https://tophertek.com/home" aria-label="Home">Home</a>
-                <a href="https://tophertek.com/about" aria-label="About">About</a>
-                <a href="https://tophertek.com/skills" aria-label="Skills">Skills</a>
-                <a href="https://tophertek.com/services" aria-label="Services">Services</a>
-                <a href="https://tophertek.com/blogs" aria-label="Blogs">Blogs</a>
-                <a href="https://tophertek.com/contact-us" aria-label="Contact Us">Contact Us</a>
-                <a href="https://tophertek.com/admin" aria-label="Admin" class="admin-link" id="adminLink">Admin</a>
-                <i class="fa-solid fa-xmark cancel" onclick="cancel()" aria-label="Close Menu"></i>
-            </div>
+            <i class="fa-solid fa-bars hamburg" onclick="hamburg()"></i>
         </div>
     </nav>
+    
     <section>
         <div class="main-container">
-            <div class="image" data-aos="zoom-in-right" data-aos-duration="1000">
-                <img src="your-gif.gif" srcset="your-gif.gif 1x" alt="Animated GIF" class="gif-image">
+            <div class="image" data-aos="zoom-in-right">
+                <img src="your-gif.gif" alt="Animated GIF" loading="lazy">
             </div>
             <div class="content">
-                <h1 data-aos="fade-left" data-aos-duration="500" data-aos-delay="800">Hey I'm <span>TopherTek</span></h1>
-                <div class="typewriter" data-aos="fade-right" data-aos-duration="500" data-aos-delay="900">I'm a <span id="typewriter-text"></span></div>
-                <p data-aos="flip-up" data-aos-duration="500" data-aos-delay="1000">I specialize in solving tech problems, developing innovative solutions, and helping businesses with IT and web development needs.</p>
-                <div class="social-links" data-aos="flip-down" data-aos-duration="500" data-aos-delay="1200">
-                    <a href="#" aria-label="GitHub"><i class="fa-brands fa-github"></i></a>
-                    <a href="#" aria-label="Facebook"><i class="fa-brands fa-facebook"></i></a>
-                    <a href="#" aria-label="Twitch"><img src="Twitch.gif" alt="Twitch"></a>
-                    <a href="#" aria-label="Twitter"><i class="fa-brands fa-x-twitter"></i></a>
+                <h1 data-aos="fade-left">Hey I'm <span>TopherTek</span></h1>
+                <div class="typewriter" data-aos="fade-right">I'm a <span id="typewriter-text"></span></div>
+                <p data-aos="flip-up">I specialize in solving tech problems, developing innovative solutions, and helping businesses with IT and web development needs.</p>
+                <div class="social-links" data-aos="flip-down">
+                    <a href="#"><i class="fa-brands fa-github"></i></a>
+                    <a href="#"><i class="fa-brands fa-facebook"></i></a>
+                    <a href="#"><img src="Twitch.gif" alt="Twitch"></a>
+                    <a href="#"><i class="fa-brands fa-x-twitter"></i></a>
                 </div>
             </div>
         </div>
     </section>
+    
     <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
     <script>
       AOS.init({offset:0});
-    </script>
-    <script>
-        function hamburg(){
-            const navbar = document.querySelector(".dropdown")
-            navbar.style.transform = "translateY(0px)"
-        }
-        function cancel(){
-            const navbar = document.querySelector(".dropdown")
-            navbar.style.transform = "translateY(-500px)"
-        }
-
-        // Typewriter effect
-        const phrases = ["Web Developer", "Graphic Designer", "Content Creator", "Tech Enthusiast", "Digital Wizard", "Tech Alchemist", "Code Craftsman", "Innovation Architect", "System Overlord", "Electronics Whisperer", "AI Experimenter", "Cyber Guardian", "Tech Trailblazer", "Digital Blacksmith", "Byte-Sized Genius", "The Fixer", "Digital Engineer", "Cloud Commander", "Automation Architect", "Software Sorcerer", "Hardware Guru", "Network Navigator", "Cyber Fixer", "Digital Craftsman", "Gadget Tinkerer", "Security Strategist", "Media Maestro", "Tech Visionary", "Quantum Debugger", "Pixel Pusher", "Cloud Juggler", "Bit Wrangler", "Latency Overlord", "404 Strategist", "Algorithm Whisperer", "Packet Shaman", "Syntax Sorcerer", "Tech Ninja", "Firmware Philosopher", "Data Necromancer", "Cache Lord", "Wi-Fi Warlock", "Glitch Bender", "Kernel Conjurer", "Logic Gatekeeper", "Hyperlink Hypnotist", "Quantum Bufferer", "Cybernetic Overthinker", "Bandwidth Barbarian", "Error Code Prophet", "Syntax Yogi", "Debugger of Doom"]; // Updated phrases
-        let currentPhraseIndex = 0;
-        const typewriterText = document.getElementById("typewriter-text");
-
-        function typePhrase() {
-            const phrase = phrases[currentPhraseIndex];
-            let currentCharIndex = 0;
-
-            function typeChar() {
-                if (currentCharIndex < phrase.length) {
-                    typewriterText.textContent += phrase.charAt(currentCharIndex);
-                    currentCharIndex++;
-                    setTimeout(typeChar, 100);
-                } else {
-                    setTimeout(erasePhrase, 2000);
-                }
-            }
-
-            typeChar();
-        }
-
-        function erasePhrase() {
-            let currentCharIndex = typewriterText.textContent.length;
-
-            function eraseChar() {
-                if (currentCharIndex > 0) {
-                    typewriterText.textContent = typewriterText.textContent.slice(0, -1);
-                    currentCharIndex--;
-                    setTimeout(eraseChar, 50);
-                } else {
-                    currentPhraseIndex = (currentPhraseIndex + 1) % phrases.length;
-                    setTimeout(typePhrase, 500);
-                }
-            }
-
-            eraseChar();
-        }
-
-        document.addEventListener("DOMContentLoaded", () => {
-            setTimeout(typePhrase, 1000);
-        });
-
-        // Admin link hover effect
-        const adminLink = document.getElementById('adminLink');
-        let hoverTimer;
-
-        adminLink.addEventListener('mouseover', () => {
-            hoverTimer = setTimeout(() => {
-                adminLink.classList.add('clickable');
-            }, 15000); // 15 seconds
-        });
-
-        adminLink.addEventListener('mouseout', () => {
-            clearTimeout(hoverTimer);
-            adminLink.classList.remove('clickable');
-        });
     </script>
 </body>
 </html>
