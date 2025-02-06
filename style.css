@@ -163,47 +163,17 @@ section {
     min-height: 100px;
 }
 
-/* Heading */
-.content h1 {
-    font-size: clamp(1rem, 2rem + 5vw, 3rem);
+/* Social Links Fix */
+.social-links {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+    margin-top: 10px;
 }
 
-.content h1 span {
-    color: rgb(109,67,0);
-    text-shadow: 0 0 10px rgb(109,67,0);
-}
-
-/* Typewriter Effect */
-.content .typewriter {
-    font-weight: 600;
-    font-size: clamp(1rem, 1rem + 5vw, 2rem);
-}
-
-/* Remove old CSS typewriter effect */
-.typewriter span::before,
-.typewriter span::after {
-    content: "";
-    animation: none;
-    border-left: none;
-}
-
-.content .typewriter span {
-    color: rgb(109,67,0);
-    font-size: 2.5rem;
-    text-shadow: 0 0 5px rgb(109,67,0);
-    position: relative;
-    transition: 0.3s linear;
-}
-
-/* Paragraph */
-.content p {
-    font-size: clamp(0.4rem, 0.2rem + 9vw, 1rem);
-    margin: 10px 0;
-}
-
-/* Social Links */
 .social-links i {
-    display: inline-flex;
+    display: flex;
     justify-content: center;
     align-items: center;
     width: 3rem;
@@ -215,6 +185,7 @@ section {
     margin: 5px 10px;
     font-size: 1.5rem;
     transition: 0.2s linear;
+    vertical-align: middle;
 }
 
 .social-links i:hover {
@@ -224,31 +195,6 @@ section {
     filter: drop-shadow(0 0 10px rgb(109,67,0));
 }
 
-/* Buttons */
-.content button {
-    width: 40%;
-    height: 6vh;
-    margin: 30px;
-    background-color: rgb(109,67,0);
-    color: white;
-    border: none;
-    outline: none;
-    font-size: 100%;
-    font-weight: 700;
-    border-radius: 5px;
-    transition: 0.2s linear;
-}
-
-.content button:hover {
-    scale: 1.1;
-    color: rgb(109,67,0);
-    border: 2px solid rgb(109,67,0);
-    background-color: transparent;
-    font-weight: 700;
-    box-shadow: 0 0 40px rgb(109,67,0);
-}
-
-/* Responsive Design */
 @media (max-width:884px) {
     body {
         overflow-y: visible;
@@ -276,6 +222,10 @@ section {
 
     .main-container .content {
         width: 80%;
+    }
+
+    .social-links {
+        margin-top: 5px;
     }
 
     .social-links i {
