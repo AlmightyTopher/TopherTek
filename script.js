@@ -56,6 +56,10 @@ const typewriterModule = (() => {
         // ... (rest of the words)
     ];
 
+    
+      // ... (rest of the words)
+    ];
+
     const typewriterSpan = document.getElementById("typewriter-text");
 
     function getRandomWord(excludeIndex) {
@@ -117,6 +121,15 @@ const contentLoaderModule = (() => {
             })
             .then(data => {
                 document.getElementById(elementId).innerHTML = data;
+
+                // Gray out the current page link
+                const currentPage = window.location.pathname;
+                const links = document.querySelectorAll('.links a');
+                links.forEach(link => {
+                    if (link.href.includes(currentPage)) {
+                        link.classList.add("disabled-link");
+                    }
+                });
             })
             .catch(error => console.error("Error loading " + file, error));
     }
@@ -124,10 +137,10 @@ const contentLoaderModule = (() => {
     return {
         init: () => {
             if (document.getElementById("header")) {
-                loadHTML("../../header.html", "header");
+                loadHTML("/header.html", "header");
             }
             if (document.getElementById("footer")) {
-                loadHTML("../../footer.html", "footer");
+                loadHTML("/footer.html", "footer");
             }
         }
     };

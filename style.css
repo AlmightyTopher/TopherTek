@@ -287,22 +287,4 @@ section {
     }
 
     .main-container .image {
-        width: 80%;
-        margin-bottom: 0px;
-    }
-}
-
-/* Disabled Link */
-.disabled-link {
-    pointer-events: none;
-    color: gray !important;
-    opacity: 0.6;
-    cursor: default;
-}
-
-.dropdown .links a.disabled-link {
-    color: gray !important;
-    pointer-events: none;
-    opacity: 0.6;
-    cursor: default;
-}
+        width: 

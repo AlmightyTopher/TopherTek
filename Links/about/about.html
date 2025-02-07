@@ -3,37 +3,45 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>About | TopherTek</title>
-
-    <!-- 🚀 FIXED CSS LINK -->
-    <link rel="stylesheet" href="../../style.css"> 
-
+    <meta name="description" content="Learn more about TopherTek and our mission to solve tech problems and develop innovative solutions.">
+    <link rel="icon" href="/favicon.ico" type="image/x-icon">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css">
+    <title>About | TopherTek</title>
+    <link rel="stylesheet" href="/style.css">
     <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
 </head>
 <body>
-
-    <!-- 🚀 DYNAMIC HEADER -->
+    <!-- Header will be dynamically loaded here -->
     <div id="header"></div>
 
     <section>
         <div class="main-container">
-            <div class="content">
+            <div class="content" data-aos="fade-up" data-aos-duration="1000">
                 <h1>About TopherTek</h1>
-                <p>This is a placeholder for the About page content.</p>
+                <p>TopherTek specializes in solving tech problems, developing innovative solutions, and helping businesses with IT and web development needs. Our mission is to empower businesses with cutting-edge technology and creative solutions.</p>
+                <div class="about-content" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="200">
+                    <h2>Our Mission</h2>
+                    <p>To provide reliable, scalable, and innovative tech solutions that drive business growth.</p>
+                </div>
+                <div class="about-content" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="400">
+                    <h2>Our Values</h2>
+                    <ul>
+                        <li>Innovation</li>
+                        <li>Integrity</li>
+                        <li>Customer Focus</li>
+                    </ul>
+                </div>
             </div>
         </div>
     </section>
 
-    <!-- 🚀 DYNAMIC FOOTER -->
+    <!-- Footer will be dynamically loaded here -->
     <div id="footer"></div>
 
     <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
     <script>
-        AOS.init({offset:0});
+        AOS.init({ offset: 0 });
     </script>
-
-    <!-- 🚀 FIXED SCRIPT LINK -->
-    <script src="../../script.js"></script>
+    <script src="/script.js"></script>
 </body>
 </html>
