@@ -7,39 +7,19 @@
     <title>TopherTek</title>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+    <style>
+        .current-page {
+            color: gray;
+            pointer-events: none;
+        }
+    </style>
 </head>
 <body>
-    <nav>
-        <div class="nav-container">
-            <div class="logo" data-aos="zoom-in" data-aos-duration="1000">
-                <span>TopherTek</span>
-            </div>
-            <div class="links">
-                <div class="link" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="100"><a href="https://tophertek.com" aria-label="Home">Home</a></div>
-                <div class="link" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="200"><a href="https://tophertek.com/links/about/about.html" aria-label="About">About</a></div>
-                <div class="link" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="300"><a href="https://tophertek.com/links/skills/skills.html" aria-label="Skills">Skills</a></div>
-                <div class="link" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="400"><a href="https://tophertek.com/links/services/services.html" aria-label="Services">Services</a></div>
-                <div class="link" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="500"><a href="https://tophertek.com/links/blogs/blogs.html" aria-label="Blogs">Blogs</a></div>
-                <div class="link contact-btn" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="600"><a href="https://tophertek.com/links/contact-us/contact-us.html" aria-label="Contact Us">Contact Us</a></div>
-            </div>
-            <i class="fa-solid fa-bars hamburg" onclick="hamburg()" aria-label="Open Menu"></i>
-        </div>
-        <div class="dropdown">
-            <div class="links">
-                <a href="https://tophertek.com" aria-label="Home">Home</a>
-                <a href="https://tophertek.com/links/about/about.html" aria-label="About">About</a>
-                <a href="https://tophertek.com/links/skills/skills.html" aria-label="Skills">Skills</a>
-                <a href="https://tophertek.com/links/services/services.html" aria-label="Services">Services</a>
-                <a href="https://tophertek.com/links/blogs/blogs.html" aria-label="Blogs">Blogs</a>
-                <a href="https://tophertek.com/links/contact-us/contact-us.html" aria-label="Contact Us">Contact Us</a>
-                <i class="fa-solid fa-xmark cancel" onclick="cancel()" aria-label="Close Menu"></i>
-            </div>
-        </div>
-    </nav>
+    <div id="header"></div>
     <section>
         <div class="main-container">
             <div class="image" data-aos="zoom-in-right" data-aos-duration="2500">
-                <img src="your-gif.gif" alt="Animated GIF" class="gif-image">
+                <img src="../../your-gif.gif" alt="Animated GIF" class="gif-image">
             </div>
             <div class="content">
                 <h1 data-aos="fade-left" data-aos-duration="1000" data-aos-delay="800">Hey I'm <span>TopherTek</span></h1>
@@ -54,10 +34,26 @@
             </div>
         </div>
     </section>
+    <div id="footer"></div>
     <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
     <script>
         AOS.init({offset:0});
     </script>
     <script src="script.js"></script>
+    <script>
+        // Function to load external HTML into a div
+        function loadHTML(divId, url) {
+            fetch(url)
+                .then(response => response.text())
+                .then(data => {
+                    document.getElementById(divId).innerHTML = data;
+                })
+                .catch(error => console.error('Error loading HTML:', error));
+        }
+
+        // Load header and footer
+        loadHTML('header', '../../header.html');
+        loadHTML('footer', '../../footer.html');
+    </script>
 </body>
 </html>
