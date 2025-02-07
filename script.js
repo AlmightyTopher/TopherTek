@@ -1,4 +1,4 @@
-document.addEventListener("DOMContentLoaded", () => {
+document.addEventListener("DOMContentLoaded", () => { 
     const words = [ 
         "Web Developer",
         "Graphic Designer",
@@ -54,37 +54,35 @@ document.addEventListener("DOMContentLoaded", () => {
         "Debugger of Doom"
     ];
     
-
     const typewriterSpan = document.getElementById("typewriter-text");
 
     function getRandomWord(excludeIndex) {
         let randomIndex;
         do {
             randomIndex = Math.floor(Math.random() * words.length);
-        } while (randomIndex === excludeIndex); // Ensure a different word is selected
+        } while (randomIndex === excludeIndex);
         return randomIndex;
     }
 
     function typeWriterEffect(word, index = 0) {
         if (index < word.length) {
             typewriterSpan.textContent = word.substring(0, index + 1);
-            setTimeout(() => typeWriterEffect(word, index + 1), 100); // Typing speed (100ms)
+            setTimeout(() => typeWriterEffect(word, index + 1), 100);
         } else {
-            setTimeout(() => eraseWord(word), 2000); // Pause before erasing
+            setTimeout(() => eraseWord(word), 2000);
         }
     }
 
     function eraseWord(word, index = word.length) {
         if (index >= 0) {
             typewriterSpan.textContent = word.substring(0, index);
-            setTimeout(() => eraseWord(word, index - 1), 50); // Erasing speed (50ms)
+            setTimeout(() => eraseWord(word, index - 1), 50);
         } else {
-            let newIndex = getRandomWord(words.indexOf(word)); // Get a new random word
-            setTimeout(() => typeWriterEffect(words[newIndex]), 500); // Short delay before typing again
+            let newIndex = getRandomWord(words.indexOf(word));
+            setTimeout(() => typeWriterEffect(words[newIndex]), 500);
         }
     }
 
-    // Start with a random word
     let firstIndex = Math.floor(Math.random() * words.length);
     typeWriterEffect(words[firstIndex]);
 });
@@ -97,3 +95,75 @@ function hamburg(){
 function cancel(){
     document.querySelector(".dropdown").style.transform = "translateY(-500px)";
 }
+
+/* 🚀 ADDED CODE STARTS HERE 🚀 */
+
+// ✅ Load Header & Footer Dynamically
+document.addEventListener("DOMContentLoaded", function () {
+    if (document.getElementById("header")) {
+        loadHTML("header.html", "header");
+    }
+    if (document.getElementById("footer")) {
+        loadHTML("footer.html", "footer");
+    }
+
+    function loadHTML(file, elementId) {
+        fetch(file)
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById(elementId).innerHTML = data;
+                if (elementId === "header") {
+                    setHeaderLinks();
+                    disableCurrentPageLink();
+                }
+            })
+            .catch(error => console.error("Error loading " + file, error));
+    }
+
+    function setHeaderLinks() {
+        const basePath = window.location.pathname.includes('/Links/') ? '../../' : '';
+
+        const links = {
+            "home-link": "https://tophertek.com",
+            "about-link": basePath + "Links/about/about.html",
+            "skills-link": basePath + "Links/skills/skills.html",
+            "services-link": basePath + "Links/services/services.html",
+            "blogs-link": basePath + "Links/blogs/blogs.html",
+            "contact-link": basePath + "Links/contact-us/contact-us.html",
+            "dropdown-home-link": "https://tophertek.com",
+            "dropdown-about-link": basePath + "Links/about/about.html",
+            "dropdown-skills-link": basePath + "Links/skills/skills.html",
+            "dropdown-services-link": basePath + "Links/services/services.html",
+            "dropdown-blogs-link": basePath + "Links/blogs/blogs.html",
+            "dropdown-contact-link": basePath + "Links/contact-us/contact-us.html"
+        };
+
+        Object.keys(links).forEach(id => {
+            let linkElement = document.getElementById(id);
+            if (linkElement) linkElement.href = links[id];
+        });
+    }
+
+    function disableCurrentPageLink() {
+        const currentPath = window.location.pathname.split("/").pop();
+        const pageMap = {
+            "about.html": ["about-link", "dropdown-about-link"],
+            "skills.html": ["skills-link", "dropdown-skills-link"],
+            "services.html": ["services-link", "dropdown-services-link"],
+            "blogs.html": ["blogs-link", "dropdown-blogs-link"],
+            "contact-us.html": ["contact-link", "dropdown-contact-link"]
+        };
+
+        if (pageMap[currentPath]) {
+            pageMap[currentPath].forEach(id => {
+                let linkElement = document.getElementById(id);
+                if (linkElement) {
+                    linkElement.classList.add("disabled-link");
+                    linkElement.removeAttribute("href");
+                }
+            });
+        }
+    }
+});
+
+/* 🚀 ADDED CODE ENDS HERE 🚀 */

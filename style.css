@@ -293,3 +293,23 @@ section {
         margin-bottom: 0px;
     }
 }
+
+/* 🚀 ADDED CODE STARTS HERE 🚀 */
+
+/* Grayed out and disabled current page link */
+.disabled-link {
+    pointer-events: none;
+    color: gray !important;
+    opacity: 0.6;
+    cursor: default;
+}
+
+/* Ensure dropdown menu links also reflect the disabled state */
+.dropdown .links a.disabled-link {
+    color: gray !important;
+    pointer-events: none;
+    opacity: 0.6;
+    cursor: default;
+}
+
+/* 🚀 ADDED CODE ENDS HERE 🚀 */

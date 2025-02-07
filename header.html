@@ -1,0 +1,97 @@
+<nav>
+    <div class="nav-container">
+        <div class="logo" data-aos="zoom-in" data-aos-duration="1000">
+            <span>TopherTek</span>
+        </div>
+        <div class="links">
+            <div class="link" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="100">
+                <a href="https://tophertek.com" id="home-link" aria-label="Home">Home</a>
+            </div>
+            <div class="link" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="200">
+                <a href="Links/about/about.html" id="about-link" aria-label="About">About</a>
+            </div>
+            <div class="link" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="300">
+                <a href="Links/skills/skills.html" id="skills-link" aria-label="Skills">Skills</a>
+            </div>
+            <div class="link" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="400">
+                <a href="Links/services/services.html" id="services-link" aria-label="Services">Services</a>
+            </div>
+            <div class="link" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="500">
+                <a href="Links/blogs/blogs.html" id="blogs-link" aria-label="Blogs">Blogs</a>
+            </div>
+            <div class="link contact-btn" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="600">
+                <a href="Links/contact-us/contact-us.html" id="contact-link" aria-label="Contact Us">Contact Us</a>
+            </div>
+        </div>
+        <i class="fa-solid fa-bars hamburg" onclick="toggleMenu()" aria-label="Open Menu"></i>
+    </div>
+    <div class="dropdown">
+        <div class="links">
+            <a href="https://tophertek.com" id="dropdown-home-link" aria-label="Home">Home</a>
+            <a href="Links/about/about.html" id="dropdown-about-link" aria-label="About">About</a>
+            <a href="Links/skills/skills.html" id="dropdown-skills-link" aria-label="Skills">Skills</a>
+            <a href="Links/services/services.html" id="dropdown-services-link" aria-label="Services">Services</a>
+            <a href="Links/blogs/blogs.html" id="dropdown-blogs-link" aria-label="Blogs">Blogs</a>
+            <a href="Links/contact-us/contact-us.html" id="dropdown-contact-link" aria-label="Contact Us">Contact Us</a>
+            <i class="fa-solid fa-xmark cancel" onclick="toggleMenu()" aria-label="Close Menu"></i>
+        </div>
+    </div>
+</nav>
+
+<script>
+    function setHeaderLinks() {
+        const basePath = window.location.pathname.includes('/Links/') ? '../../' : '';
+
+        const links = {
+            "home-link": "https://tophertek.com",
+            "about-link": basePath + "Links/about/about.html",
+            "skills-link": basePath + "Links/skills/skills.html",
+            "services-link": basePath + "Links/services/services.html",
+            "blogs-link": basePath + "Links/blogs/blogs.html",
+            "contact-link": basePath + "Links/contact-us/contact-us.html",
+            "dropdown-home-link": "https://tophertek.com",
+            "dropdown-about-link": basePath + "Links/about/about.html",
+            "dropdown-skills-link": basePath + "Links/skills/skills.html",
+            "dropdown-services-link": basePath + "Links/services/services.html",
+            "dropdown-blogs-link": basePath + "Links/blogs/blogs.html",
+            "dropdown-contact-link": basePath + "Links/contact-us/contact-us.html"
+        };
+
+        Object.keys(links).forEach(id => {
+            let linkElement = document.getElementById(id);
+            if (linkElement) linkElement.href = links[id];
+        });
+    }
+
+    function disableCurrentPageLink() {
+        const currentPath = window.location.pathname.split("/").pop();
+        const pageMap = {
+            "about.html": ["about-link", "dropdown-about-link"],
+            "skills.html": ["skills-link", "dropdown-skills-link"],
+            "services.html": ["services-link", "dropdown-services-link"],
+            "blogs.html": ["blogs-link", "dropdown-blogs-link"],
+            "contact-us.html": ["contact-link", "dropdown-contact-link"]
+        };
+
+        if (pageMap[currentPath]) {
+            pageMap[currentPath].forEach(id => {
+                let linkElement = document.getElementById(id);
+                if (linkElement) {
+                    linkElement.classList.add("disabled-link");
+                    linkElement.removeAttribute("href");
+                }
+            });
+        }
+    }
+
+    function toggleMenu() {
+        const dropdown = document.querySelector(".dropdown");
+        const isOpen = dropdown.style.transform === "translateY(0px)";
+        dropdown.style.transform = isOpen ? "translateY(-500px)" : "translateY(0px)";
+    }
+
+    document.addEventListener("DOMContentLoaded", function () {
+        setHeaderLinks();
+        disableCurrentPageLink();
+    });
+</script>
