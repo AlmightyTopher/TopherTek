@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css">
+    <title>TopherTek</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+</head>
+<body>
+    <nav>
+        <div class="nav-container">
+            <div class="logo" data-aos="zoom-in" data-aos-duration="1000">
+                <span>TopherTek</span>
+            </div>
+            <div class="links">
+                <div class="link" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="100"><a href="https://tophertek.com" aria-label="Home">Home</a></div>
+                <div class="link" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="200"><a href="https://tophertek.com/links/about/about.html" aria-label="About">About</a></div>
+                <div class="link" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="300"><a href="https://tophertek.com/links/skills/skills.html" aria-label="Skills">Skills</a></div>
+                <div class="link" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="400"><a href="https://tophertek.com/links/services/services.html" aria-label="Services">Services</a></div>
+                <div class="link" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="500"><a href="https://tophertek.com/links/blogs/blogs.html" aria-label="Blogs">Blogs</a></div>
+                <div class="link contact-btn" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="600"><a href="https://tophertek.com/links/contact-us/contact-us.html" aria-label="Contact Us">Contact Us</a></div>
+            </div>
+            <i class="fa-solid fa-bars hamburg" onclick="hamburg()" aria-label="Open Menu"></i>
+        </div>
+        <div class="dropdown">
+            <div class="links">
+                <a href="https://tophertek.com" aria-label="Home">Home</a>
+                <a href="https://tophertek.com/links/about/about.html" aria-label="About">About</a>
+                <a href="https://tophertek.com/links/skills/skills.html" aria-label="Skills">Skills</a>
+                <a href="https://tophertek.com/links/services/services.html" aria-label="Services">Services</a>
+                <a href="https://tophertek.com/links/blogs/blogs.html" aria-label="Blogs">Blogs</a>
+                <a href="https://tophertek.com/links/contact-us/contact-us.html" aria-label="Contact Us">Contact Us</a>
+                <i class="fa-solid fa-xmark cancel" onclick="cancel()" aria-label="Close Menu"></i>
+            </div>
+        </div>
+    </nav>
+    <section>
+        <div class="main-container">
+            <div class="image" data-aos="zoom-in-right" data-aos-duration="2500">
+                <img src="your-gif.gif" alt="Animated GIF" class="gif-image">
+            </div>
+            <div class="content">
+                <h1 data-aos="fade-left" data-aos-duration="1000" data-aos-delay="800">Hey I'm <span>TopherTek</span></h1>
+                <div class="typewriter" data-aos="fade-right" data-aos-duration="1000" data-aos-delay="900">I'm a <span id="typewriter-text"></span></div>
+                <p data-aos="flip-up" data-aos-duration="1000" data-aos-delay="1000">I specialize in solving tech problems, developing innovative solutions, and helping businesses with IT and web development needs.</p>
+                <div class="social-links" data-aos="flip-down" data-aos-duration="1000" data-aos-delay="1200">
+                    <a href="#" aria-label="GitHub"><i class="fa-brands fa-github"></i></a>
+                    <a href="#" aria-label="Facebook"><i class="fa-brands fa-facebook"></i></a>
+                    <a href="#" aria-label="LinkedIn"><i class="fa-brands fa-linkedin"></i></a>
+                    <a href="#" aria-label="Twitter"><i class="fa-brands fa-x-twitter"></i></a>
+                </div>
+            </div>
+        </div>
+    </section>
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <script>
+        AOS.init({offset:0});
+    </script>
+    <script src="script.js"></script>
+</body>
+</html>
