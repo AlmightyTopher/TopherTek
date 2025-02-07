@@ -101,68 +101,24 @@ function cancel(){
 // ✅ Load Header & Footer Dynamically
 document.addEventListener("DOMContentLoaded", function () {
     if (document.getElementById("header")) {
-        loadHTML("header.html", "header");
+        loadHTML("../../header.html", "header");
     }
     if (document.getElementById("footer")) {
-        loadHTML("footer.html", "footer");
+        loadHTML("../../footer.html", "footer");
     }
 
     function loadHTML(file, elementId) {
         fetch(file)
-            .then(response => response.text())
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error(`Failed to load ${file}: ${response.status}`);
+                }
+                return response.text();
+            })
             .then(data => {
                 document.getElementById(elementId).innerHTML = data;
-                if (elementId === "header") {
-                    setHeaderLinks();
-                    disableCurrentPageLink();
-                }
             })
             .catch(error => console.error("Error loading " + file, error));
-    }
-
-    function setHeaderLinks() {
-        const basePath = window.location.pathname.includes('/Links/') ? '../../' : '';
-
-        const links = {
-            "home-link": "https://tophertek.com",
-            "about-link": basePath + "Links/about/about.html",
-            "skills-link": basePath + "Links/skills/skills.html",
-            "services-link": basePath + "Links/services/services.html",
-            "blogs-link": basePath + "Links/blogs/blogs.html",
-            "contact-link": basePath + "Links/contact-us/contact-us.html",
-            "dropdown-home-link": "https://tophertek.com",
-            "dropdown-about-link": basePath + "Links/about/about.html",
-            "dropdown-skills-link": basePath + "Links/skills/skills.html",
-            "dropdown-services-link": basePath + "Links/services/services.html",
-            "dropdown-blogs-link": basePath + "Links/blogs/blogs.html",
-            "dropdown-contact-link": basePath + "Links/contact-us/contact-us.html"
-        };
-
-        Object.keys(links).forEach(id => {
-            let linkElement = document.getElementById(id);
-            if (linkElement) linkElement.href = links[id];
-        });
-    }
-
-    function disableCurrentPageLink() {
-        const currentPath = window.location.pathname.split("/").pop();
-        const pageMap = {
-            "about.html": ["about-link", "dropdown-about-link"],
-            "skills.html": ["skills-link", "dropdown-skills-link"],
-            "services.html": ["services-link", "dropdown-services-link"],
-            "blogs.html": ["blogs-link", "dropdown-blogs-link"],
-            "contact-us.html": ["contact-link", "dropdown-contact-link"]
-        };
-
-        if (pageMap[currentPath]) {
-            pageMap[currentPath].forEach(id => {
-                let linkElement = document.getElementById(id);
-                if (linkElement) {
-                    linkElement.classList.add("disabled-link");
-                    linkElement.removeAttribute("href");
-                }
-            });
-        }
     }
 });
 
