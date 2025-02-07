@@ -1,5 +1,6 @@
-document.addEventListener("DOMContentLoaded", () => { 
-    const words = [ 
+// Typewriter Effect Module
+const typewriterModule = (() => {
+    const words = [
         "Web Developer",
         "Graphic Designer",
         "Content Creator",
@@ -52,8 +53,9 @@ document.addEventListener("DOMContentLoaded", () => {
         "Error Code Prophet",
         "Syntax Yogi",
         "Debugger of Doom"
+        // ... (rest of the words)
     ];
-    
+
     const typewriterSpan = document.getElementById("typewriter-text");
 
     function getRandomWord(excludeIndex) {
@@ -83,30 +85,28 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     }
 
-    let firstIndex = Math.floor(Math.random() * words.length);
-    typeWriterEffect(words[firstIndex]);
-});
+    return {
+        init: () => {
+            let firstIndex = Math.floor(Math.random() * words.length);
+            typeWriterEffect(words[firstIndex]);
+        }
+    };
+})();
 
-// ✅ Mobile Navigation Toggle (Same as Original)
-function hamburg(){
-    document.querySelector(".dropdown").style.transform = "translateY(0px)";
-}
+// Mobile Navigation Module
+const navModule = (() => {
+    return {
+        hamburg: () => {
+            document.querySelector(".dropdown").style.transform = "translateY(0px)";
+        },
+        cancel: () => {
+            document.querySelector(".dropdown").style.transform = "translateY(-500px)";
+        }
+    };
+})();
 
-function cancel(){
-    document.querySelector(".dropdown").style.transform = "translateY(-500px)";
-}
-
-/* 🚀 ADDED CODE STARTS HERE 🚀 */
-
-// ✅ Load Header & Footer Dynamically
-document.addEventListener("DOMContentLoaded", function () {
-    if (document.getElementById("header")) {
-        loadHTML("../../header.html", "header");
-    }
-    if (document.getElementById("footer")) {
-        loadHTML("../../footer.html", "footer");
-    }
-
+// Dynamic Content Loading Module
+const contentLoaderModule = (() => {
     function loadHTML(file, elementId) {
         fetch(file)
             .then(response => {
@@ -120,6 +120,25 @@ document.addEventListener("DOMContentLoaded", function () {
             })
             .catch(error => console.error("Error loading " + file, error));
     }
+
+    return {
+        init: () => {
+            if (document.getElementById("header")) {
+                loadHTML("../../header.html", "header");
+            }
+            if (document.getElementById("footer")) {
+                loadHTML("../../footer.html", "footer");
+            }
+        }
+    };
+})();
+
+// Initialize Modules
+document.addEventListener("DOMContentLoaded", () => {
+    typewriterModule.init();
+    contentLoaderModule.init();
 });
 
-/* 🚀 ADDED CODE ENDS HERE 🚀 */
+// Expose Navigation Functions to Global Scope
+window.hamburg = navModule.hamburg;
+window.cancel = navModule.cancel;
