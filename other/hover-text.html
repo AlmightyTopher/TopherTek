@@ -5,33 +5,22 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Floating Text</title>
     <style>
-        /* Fullscreen Transparent Background */
-        body {
+        /* Make sure the entire page is transparent */
+        html, body {
             margin: 0;
             padding: 0;
-            background: transparent;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
+            background: rgba(0, 0, 0, 0); /* Ensure transparency */
         }
 
         /* Floating Transparent Text */
         .floating-text {
             position: absolute;
             color: white;
-            font-size: 3vw; /* Responsive */
+            font-size: 3vw;
             font-weight: bold;
             text-align: center;
             background: transparent;
             padding: 10px;
-        }
-
-        /* Mobile Responsive */
-        @media (max-width: 768px) {
-            .floating-text {
-                font-size: 6vw;
-            }
         }
     </style>
 </head>
