@@ -1,5 +1,11 @@
-/links/about/style.css
+/style.css
   Content-Type: text/css
 
-/links/about/script.js
+/script.js
   Content-Type: application/javascript
+
+/header.html
+  Content-Type: text/html
+
+/footer.html
+  Content-Type: text/html
