@@ -92,56 +92,6 @@ nav {
     width: 100%;
 }
 
-.nav-container .contact-btn {
-    background-color: transparent;
-    padding: 5px 20px;
-    border-radius: 20px;
-    border: 2px solid var(--primary-color);
-    transition: background-color var(--transition-speed) linear, color var(--transition-speed) linear;
-}
-
-.nav-container .contact-btn a {
-    color: white;
-    transition: color var(--transition-speed) linear;
-}
-
-.nav-container .contact-btn:hover, 
-.nav-container .contact-btn:hover a {
-    background-color: var(--primary-color);
-    color: white;
-}
-
-.nav-container .links a:hover {
-    color: var(--primary-color);
-}
-
-/* Dropdown Menu */
-.dropdown {
-    z-index: 100;
-    position: absolute;
-    top: 0;
-    transform: translateY(-500px);
-    width: 100%;
-    height: auto;
-    backdrop-filter: brightness(40%) blur(3px);
-    box-shadow: 0 0 20px black;
-    transition: transform var(--transition-speed) linear;
-}
-
-.dropdown .links a {
-    color: white;
-    display: flex;
-    text-decoration: none;
-    justify-content: center;
-    padding: 15px 0;
-    align-items: center;
-    transition: background-color var(--transition-speed) linear;
-}
-
-.dropdown .links a:hover {
-    background-color: var(--primary-color);
-}
-
 /* Social Links */
 .social-links i {
     display: inline-flex;
@@ -165,41 +115,66 @@ nav {
     filter: drop-shadow(0 0 10px var(--primary-color));
 }
 
-/* Animated TikTok Neon Glow */
-@keyframes tiktokGlow {
-    0% { box-shadow: 0 0 5px #FF0050, 0 0 10px #69C9D0; }
-    50% { box-shadow: 0 0 15px #FF0050, 0 0 25px #69C9D0; }
-    100% { box-shadow: 0 0 5px #FF0050, 0 0 10px #69C9D0; }
+/* Typewriter Effect */
+.content .typewriter {
+    font-weight: 600;
+    font-size: clamp(1rem, 1rem + 5vw, 2rem);
+}
+
+.content .typewriter span {
+    color: var(--primary-color);
+    font-size: 2.5rem;
+    text-shadow: 0 0 5px var(--primary-color);
+    position: relative;
+    transition: color var(--transition-speed) linear;
+}
+
+/* Official Social Media Colors */
+.social-links .fa-youtube {
+    color: #FF0000; /* YouTube Red */
+}
+
+.social-links .fa-twitch {
+    color: #6441a5; /* Twitch Purple */
+}
+
+.social-links .fa-github {
+    color: #181717; /* GitHub Black */
+}
+
+.social-links .fa-facebook {
+    color: #1877F2; /* Facebook Blue */
+}
+
+.social-links .fa-linkedin {
+    color: #0077b5; /* LinkedIn Blue */
+}
+
+.social-links .fa-x-twitter {
+    color: black; /* Twitter (X) Black */
 }
 
 .social-links .fa-tiktok {
-    color: black;
-    background-color: white;
-    transition: all 0.3s ease-in-out;
+    color: black; /* Default TikTok */
 }
 
-.social-links .fa-tiktok:hover {
-    background-color: black;
-    color: white;
-    animation: tiktokGlow 1.5s infinite alternate ease-in-out;
+/* Discord - Now With Correct Color */
+.social-links .fa-discord {
+    color: #5865F2; /* Official Discord Color */
 }
 
-/* YouTube */
-.social-links .fa-youtube {
-    color: red;
-    transition: all 0.3s ease-in-out;
+/* Instagram - Now With Correct Gradient Effect */
+.social-links .fa-instagram {
+    background: linear-gradient(45deg, #f9ce34, #ee2a7b, #6228d7);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
 }
 
+/* Hover Effects - Icon Changes Color */
 .social-links .fa-youtube:hover {
     color: white;
-    background-color: red;
-    box-shadow: 0 0 15px red;
-}
-
-/* Twitch */
-.social-links .fa-twitch {
-    color: #6441a5;
-    transition: all 0.3s ease-in-out;
+    background-color: #FF0000;
+    box-shadow: 0 0 15px #FF0000;
 }
 
 .social-links .fa-twitch:hover {
@@ -208,22 +183,10 @@ nav {
     box-shadow: 0 0 15px #6441a5;
 }
 
-/* GitHub */
-.social-links .fa-github {
-    color: black;
-    transition: all 0.3s ease-in-out;
-}
-
 .social-links .fa-github:hover {
     color: white;
-    background-color: black;
-    box-shadow: 0 0 15px black;
-}
-
-/* Facebook */
-.social-links .fa-facebook {
-    color: #1877F2;
-    transition: all 0.3s ease-in-out;
+    background-color: #181717;
+    box-shadow: 0 0 15px #181717;
 }
 
 .social-links .fa-facebook:hover {
@@ -232,28 +195,50 @@ nav {
     box-shadow: 0 0 15px #1877F2;
 }
 
-/* LinkedIn */
-.social-links .fa-linkedin {
-    color: #0077b5;
-    transition: all 0.3s ease-in-out;
-}
-
 .social-links .fa-linkedin:hover {
     color: white;
     background-color: #0077b5;
     box-shadow: 0 0 15px #0077b5;
 }
 
-/* Twitter (X) */
-.social-links .fa-x-twitter {
-    color: black;
-    transition: all 0.3s ease-in-out;
-}
-
 .social-links .fa-x-twitter:hover {
     color: white;
     background-color: black;
     box-shadow: 0 0 15px black;
+}
+
+.social-links .fa-discord:hover {
+    color: white;
+    background-color: #5865F2;
+    box-shadow: 0 0 15px #5865F2;
+}
+
+.social-links .fa-instagram:hover {
+    filter: brightness(1.5);
+}
+
+/* Restored Layout */
+.main-container {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.main-container .image {
+    z-index: -1;
+    width: 50%;
+}
+
+.main-container .image img {
+    width: 100%;
+}
+
+.main-container .content {
+    color: var(--text-color);
+    width: 40%;
+    min-height: 100px;
 }
 
 /* Responsive Design */
