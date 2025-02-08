@@ -200,7 +200,7 @@ section {
 }
 
 /* Social Links */
-.social-links i {
+.social-links a {
     display: inline-flex;
     justify-content: center;
     align-items: center;
@@ -215,12 +215,24 @@ section {
     transition: all var(--transition-speed) linear;
 }
 
-.social-links i:hover {
+/* Hover Effects with Platform Colors */
+.social-links a:hover {
     scale: 1.3;
     color: white;
     background-color: var(--primary-color);
     filter: drop-shadow(0 0 10px var(--primary-color));
 }
+
+/* Specific Platform Colors */
+.github:hover { background-color: #333; border-color: #333; }
+.facebook:hover { background-color: #1877F2; border-color: #1877F2; }
+.linkedin:hover { background-color: #0077B5; border-color: #0077B5; }
+.twitter:hover { background-color: #1DA1F2; border-color: #1DA1F2; }
+.twitch:hover { background-color: #9146FF; border-color: #9146FF; }
+.youtube:hover { background-color: #FF0000; border-color: #FF0000; }
+.instagram:hover { background-color: #E1306C; border-color: #E1306C; }
+.discord:hover { background-color: #5865F2; border-color: #5865F2; }
+.tiktok:hover { background-color: #000000; border-color: #000000; }
 
 /* Buttons */
 .content button {
@@ -276,7 +288,7 @@ section {
         width: 80%;
     }
 
-    .social-links i {
+    .social-links a {
         width: 2.5rem;
         height: 2.5rem;
         font-size: 1.5rem;
@@ -285,6 +297,4 @@ section {
     .cancel {
         color: white;
     }
-
-    .main-container .image {
-        width: 
+}
