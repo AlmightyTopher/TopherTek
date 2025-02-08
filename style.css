@@ -177,6 +177,15 @@ section {
 }
 
 /* Social Links */
+.social-links {
+    display: flex;
+    justify-content: center; /* Centers icons */
+    align-items: center;
+    gap: 15px; /* Space between icons */
+    flex-wrap: wrap; /* Ensures icons stay in one row */
+    margin-top: 20px;
+}
+
 .social-links i {
     display: inline-flex;
     justify-content: center;
