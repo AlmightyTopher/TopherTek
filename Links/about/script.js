@@ -1,4 +1,4 @@
-document.addEventListener("DOMContentLoaded", () => {
+document.addEventListener("DOMContentLoaded", () => { 
     const words = [ 
         "Web Developer",
         "Graphic Designer",
@@ -54,37 +54,35 @@ document.addEventListener("DOMContentLoaded", () => {
         "Debugger of Doom"
     ];
     
-
     const typewriterSpan = document.getElementById("typewriter-text");
 
     function getRandomWord(excludeIndex) {
         let randomIndex;
         do {
             randomIndex = Math.floor(Math.random() * words.length);
-        } while (randomIndex === excludeIndex); // Ensure a different word is selected
+        } while (randomIndex === excludeIndex);
         return randomIndex;
     }
 
     function typeWriterEffect(word, index = 0) {
         if (index < word.length) {
             typewriterSpan.textContent = word.substring(0, index + 1);
-            setTimeout(() => typeWriterEffect(word, index + 1), 100); // Typing speed (100ms)
+            setTimeout(() => typeWriterEffect(word, index + 1), 100);
         } else {
-            setTimeout(() => eraseWord(word), 2000); // Pause before erasing
+            setTimeout(() => eraseWord(word), 2000);
         }
     }
 
     function eraseWord(word, index = word.length) {
         if (index >= 0) {
             typewriterSpan.textContent = word.substring(0, index);
-            setTimeout(() => eraseWord(word, index - 1), 50); // Erasing speed (50ms)
+            setTimeout(() => eraseWord(word, index - 1), 50);
         } else {
-            let newIndex = getRandomWord(words.indexOf(word)); // Get a new random word
-            setTimeout(() => typeWriterEffect(words[newIndex]), 500); // Short delay before typing again
+            let newIndex = getRandomWord(words.indexOf(word));
+            setTimeout(() => typeWriterEffect(words[newIndex]), 500);
         }
     }
 
-    // Start with a random word
     let firstIndex = Math.floor(Math.random() * words.length);
     typeWriterEffect(words[firstIndex]);
 });
@@ -97,3 +95,31 @@ function hamburg(){
 function cancel(){
     document.querySelector(".dropdown").style.transform = "translateY(-500px)";
 }
+
+/* 🚀 ADDED CODE STARTS HERE 🚀 */
+
+// ✅ Load Header & Footer Dynamically
+document.addEventListener("DOMContentLoaded", function () {
+    if (document.getElementById("header")) {
+        loadHTML("../../header.html", "header");
+    }
+    if (document.getElementById("footer")) {
+        loadHTML("../../footer.html", "footer");
+    }
+
+    function loadHTML(file, elementId) {
+        fetch(file)
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error(`Failed to load ${file}: ${response.status}`);
+                }
+                return response.text();
+            })
+            .then(data => {
+                document.getElementById(elementId).innerHTML = data;
+            })
+            .catch(error => console.error("Error loading " + file, error));
+    }
+});
+
+/* 🚀 ADDED CODE ENDS HERE 🚀 */
