@@ -1,2 +1,5 @@
 /links/about/style.css
   Content-Type: text/css
+
+/links/about/script.js
+  Content-Type: application/javascript
