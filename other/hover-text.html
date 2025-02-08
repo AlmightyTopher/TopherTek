@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Floating Text</title>
+    <style>
+        /* Fullscreen Background */
+        body {
+            margin: 0;
+            padding: 0;
+            background: transparent;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        /* Transparent Floating Text */
+        .floating-text {
+            position: absolute;
+            color: white;
+            font-size: 3vw; /* Responsive text */
+            font-weight: bold;
+            text-align: center;
+            background: transparent;
+            padding: 10px;
+        }
+
+        /* Mobile Adjustments */
+        @media (max-width: 768px) {
+            .floating-text {
+                font-size: 6vw;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="floating-text">Your Custom Hovering Text</div>
+</body>
+</html>
