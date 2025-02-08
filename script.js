@@ -1,6 +1,5 @@
-// Typewriter Effect Module
-const typewriterModule = (() => {
-    const words = [
+document.addEventListener("DOMContentLoaded", () => { 
+    const words = [ 
         "Web Developer",
         "Graphic Designer",
         "Content Creator",
@@ -53,13 +52,8 @@ const typewriterModule = (() => {
         "Error Code Prophet",
         "Syntax Yogi",
         "Debugger of Doom"
-        // ... (rest of the words)
     ];
-
     
-      // ... (rest of the words)
-    ];
-
     const typewriterSpan = document.getElementById("typewriter-text");
 
     function getRandomWord(excludeIndex) {
@@ -89,28 +83,30 @@ const typewriterModule = (() => {
         }
     }
 
-    return {
-        init: () => {
-            let firstIndex = Math.floor(Math.random() * words.length);
-            typeWriterEffect(words[firstIndex]);
-        }
-    };
-})();
+    let firstIndex = Math.floor(Math.random() * words.length);
+    typeWriterEffect(words[firstIndex]);
+});
 
-// Mobile Navigation Module
-const navModule = (() => {
-    return {
-        hamburg: () => {
-            document.querySelector(".dropdown").style.transform = "translateY(0px)";
-        },
-        cancel: () => {
-            document.querySelector(".dropdown").style.transform = "translateY(-500px)";
-        }
-    };
-})();
+// ✅ Mobile Navigation Toggle (Same as Original)
+function hamburg(){
+    document.querySelector(".dropdown").style.transform = "translateY(0px)";
+}
 
-// Dynamic Content Loading Module
-const contentLoaderModule = (() => {
+function cancel(){
+    document.querySelector(".dropdown").style.transform = "translateY(-500px)";
+}
+
+/* 🚀 ADDED CODE STARTS HERE 🚀 */
+
+// ✅ Load Header & Footer Dynamically
+document.addEventListener("DOMContentLoaded", function () {
+    if (document.getElementById("header")) {
+        loadHTML("../../header.html", "header");
+    }
+    if (document.getElementById("footer")) {
+        loadHTML("../../footer.html", "footer");
+    }
+
     function loadHTML(file, elementId) {
         fetch(file)
             .then(response => {
@@ -121,37 +117,9 @@ const contentLoaderModule = (() => {
             })
             .then(data => {
                 document.getElementById(elementId).innerHTML = data;
-
-                // Gray out the current page link
-                const currentPage = window.location.pathname;
-                const links = document.querySelectorAll('.links a');
-                links.forEach(link => {
-                    if (link.href.includes(currentPage)) {
-                        link.classList.add("disabled-link");
-                    }
-                });
             })
             .catch(error => console.error("Error loading " + file, error));
     }
-
-    return {
-        init: () => {
-            if (document.getElementById("header")) {
-                loadHTML("/header.html", "header");
-            }
-            if (document.getElementById("footer")) {
-                loadHTML("/footer.html", "footer");
-            }
-        }
-    };
-})();
-
-// Initialize Modules
-document.addEventListener("DOMContentLoaded", () => {
-    typewriterModule.init();
-    contentLoaderModule.init();
 });
 
-// Expose Navigation Functions to Global Scope
-window.hamburg = navModule.hamburg;
-window.cancel = navModule.cancel;
+/* 🚀 ADDED CODE ENDS HERE 🚀 */
