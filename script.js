@@ -1,42 +1,88 @@
+/* script.js */
+
+/**
+ * Opens the mobile navigation dropdown.
+ */
 function hamburg() {
     document.querySelector(".dropdown").style.transform = "translateY(0px)";
+    document.querySelector(".dropdown").setAttribute("aria-hidden", "false"); // Improves accessibility
 }
 
+/**
+ * Closes the mobile navigation dropdown.
+ */
 function cancel() {
     document.querySelector(".dropdown").style.transform = "translateY(-500px)";
+    document.querySelector(".dropdown").setAttribute("aria-hidden", "true"); // Improves accessibility
 }
 
 document.addEventListener("DOMContentLoaded", () => {
-    let e = ["Web Developer", "Graphic Designer", "Content Creator", "Tech Enthusiast", "Digital Wizard", "Tech Alchemist", "Code Craftsman", "Innovation Architect", "System Overlord", "Electronics Whisperer", "AI Experimenter", "Cyber Guardian", "Tech Trailblazer", "Digital Blacksmith", "Byte-Sized Genius", "The Fixer", "Digital Engineer", "Cloud Commander", "Automation Architect", "Software Sorcerer", "Hardware Guru", "Network Navigator", "Cyber Fixer", "Digital Craftsman", "Gadget Tinkerer", "Security Strategist", "Media Maestro", "Tech Visionary", "Quantum Debugger", "Pixel Pusher", "Cloud Juggler", "Bit Wrangler", "Latency Overlord", "404 Strategist", "Algorithm Whisperer", "Packet Shaman", "Syntax Sorcerer", "Tech Ninja", "Firmware Philosopher", "Data Necromancer", "Cache Lord", "Wi-Fi Warlock", "Glitch Bender", "Kernel Conjurer", "Logic Gatekeeper", "Hyperlink Hypnotist", "Quantum Bufferer", "Cybernetic Overthinker", "Bandwidth Barbarian", "Error Code Prophet", "Syntax Yogi", "Debugger of Doom"],
-        t = document.getElementById("typewriter-text");
+    const typewriterText = document.getElementById("typewriter-text");
+    const phrases = [
+        "Web Developer", "Graphic Designer", "Content Creator", "Tech Enthusiast",
+        "Digital Wizard", "Tech Alchemist", "Code Craftsman", "Innovation Architect"
+    ];
+    let currentPhrase = -1;
 
-    function r(t) {
-        let r;
-        do r = Math.floor(Math.random() * e.length);
-        while (r === t);
-        return r;
+    /**
+     * Gets a random phrase index, ensuring it's different from the previous one.
+     */
+    function getRandomPhraseIndex() {
+        let newIndex;
+        do {
+            newIndex = Math.floor(Math.random() * phrases.length);
+        } while (newIndex === currentPhrase);
+        return newIndex;
     }
 
-    function n(e, r = 0) {
-        r < e.length ? (t.textContent = e.substring(0, r + 1), setTimeout(() => n(e, r + 1), 100)) : setTimeout(() => o(e), 2000);
-    }
-
-    function o(a, i = a.length) {
-        if (i >= 0) t.textContent = a.substring(0, i), setTimeout(() => o(a, i - 1), 50);
-        else {
-            let l = r(e.indexOf(a));
-            setTimeout(() => n(e[l]), 500);
+    /**
+     * Typewriter effect that types out text character by character.
+     */
+    function typeText(text, index = 0) {
+        if (index < text.length) {
+            typewriterText.textContent = text.substring(0, index + 1);
+            setTimeout(() => typeText(text, index + 1), 100);
+        } else {
+            setTimeout(() => deleteText(text), 2000);
         }
     }
-    n(e[Math.floor(Math.random() * e.length)])
-}), document.addEventListener("DOMContentLoaded", function () {
-    function e(e, t) {
-        fetch(e).then(t => {
-            if (!t.ok) throw Error(`Failed to load ${e}: ${t.status}`);
-            return t.text()
-        }).then(e => {
-            document.getElementById(t).innerHTML = e
-        }).catch(t => console.error("Error loading " + e, t))
+
+    /**
+     * Deletes text character by character to create a typing loop.
+     */
+    function deleteText(text, index = text.length) {
+        if (index >= 0) {
+            typewriterText.textContent = text.substring(0, index);
+            setTimeout(() => deleteText(text, index - 1), 50);
+        } else {
+            currentPhrase = getRandomPhraseIndex();
+            setTimeout(() => typeText(phrases[currentPhrase]), 500);
+        }
     }
-    document.getElementById("header") && e("../../header.html", "header"), document.getElementById("footer") && e("../../footer.html", "footer")
+
+    // Start the typewriter effect
+    currentPhrase = getRandomPhraseIndex();
+    typeText(phrases[currentPhrase]);
+
+    /**
+     * Dynamically loads external content (header and footer) into designated elements.
+     */
+    function loadContent(url, targetId) {
+        fetch(url)
+            .then(response => {
+                if (!response.ok) throw new Error(`Failed to load ${url}: ${response.status}`);
+                return response.text();
+            })
+            .then(html => {
+                document.getElementById(targetId).innerHTML = html;
+            })
+            .catch(error => console.error("Error loading", url, error));
+    }
+
+    if (document.getElementById("header")) {
+        loadContent("../../header.html", "header");
+    }
+    if (document.getElementById("footer")) {
+        loadContent("../../footer.html", "footer");
+    }
 });
