@@ -134,7 +134,7 @@ body {
 }
 
 .gif-image {
-    width: 95%; /* Reduced size slightly */
+    width: 75%; /* Reduced size slightly */
     height: auto;
     object-fit: cover;
 }
