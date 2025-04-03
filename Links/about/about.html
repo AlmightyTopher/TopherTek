@@ -3,86 +3,105 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
-    <!-- Font Awesome Icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css">
-    
-    <!-- Page Title -->
-    <title>TopherTek</title>
-    
-    <!-- Main CSS -->
-    <link rel="stylesheet" href="/style.css">
 
-    <!-- AOS (Animate on Scroll) Library -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css">
+
+    <title>About - TopherTek</title>
+
+    <link rel="stylesheet" href="/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
-</head>
+
+    </head>
 <body>
 
-    <!-- Header (Loaded Dynamically) -->
     <div id="header"></div>
 
-    <!-- Main Content -->
     <section>
         <div class="main-container">
-            <!-- Animated GIF -->
             <div class="image" data-aos="zoom-in-right" data-aos-duration="2500">
-                <img src="/your-gif.gif" alt="Animated GIF" class="gif-image">
+                 <img src="/your-gif.gif" alt="Animated GIF" class="gif-image">
             </div>
 
-            <!-- About Section -->
             <div class="content">
                 <h1 data-aos="fade-left" data-aos-duration="1000" data-aos-delay="800">
-                    Hey I'm <span>TopherTek</span>
+                    About <span>TopherTek</span>
                 </h1>
-                <div class="typewriter" data-aos="fade-right" data-aos-duration="1000" data-aos-delay="900">
+                 <div class="typewriter" data-aos="fade-right" data-aos-duration="1000" data-aos-delay="900">
                     I'm a <span id="typewriter-text"></span>
                 </div>
                 <p data-aos="flip-up" data-aos-duration="1000" data-aos-delay="1000">
-                    I specialize in solving tech problems, developing innovative solutions, and helping businesses with IT and web development needs.
+                    Detailed information about TopherTek goes here. I specialize in solving tech problems, developing innovative solutions, and helping businesses with IT and web development needs.
                 </p>
 
-                <!-- Social Links -->
                 <div class="social-links">
-                    <a href="https://github.com/" class="github" data-aos="fade-up" data-aos-delay="100"><i class="fa-brands fa-github"></i></a>
-                    <a href="https://facebook.com/" class="facebook" data-aos="fade-up" data-aos-delay="200"><i class="fa-brands fa-facebook"></i></a>
-                    <a href="https://linkedin.com/in/" class="linkedin" data-aos="fade-up" data-aos-delay="300"><i class="fa-brands fa-linkedin"></i></a>
-                    <a href="https://twitter.com/" class="twitter" data-aos="fade-up" data-aos-delay="400"><i class="fa-brands fa-x-twitter"></i></a>
-                    <a href="https://www.twitch.tv/" class="twitch" data-aos="fade-up" data-aos-delay="500"><i class="fa-brands fa-twitch"></i></a>
-                    <a href="https://www.youtube.com/c/" class="youtube" data-aos="fade-up" data-aos-delay="600"><i class="fa-brands fa-youtube"></i></a>
-                    <a href="https://www.instagram.com/" class="instagram" data-aos="fade-up" data-aos-delay="700"><i class="fa-brands fa-instagram"></i></a>
-                    <a href="https://discord.gg/yourlink" class="discord" data-aos="fade-up" data-aos-delay="800"><i class="fa-brands fa-discord"></i></a>
-                    <a href="https://www.tiktok.com/" class="tiktok" data-aos="fade-up" data-aos-delay="900"><i class="fa-brands fa-tiktok"></i></a>
-                </div>
+                    <a href="https://github.com/" class="github" data-aos="fade-up" data-aos-delay="100" aria-label="GitHub"><i class="fa-brands fa-github"></i></a>
+                    <a href="https://facebook.com/" class="facebook" data-aos="fade-up" data-aos-delay="200" aria-label="Facebook"><i class="fa-brands fa-facebook"></i></a>
+                    <a href="https://linkedin.com/in/" class="linkedin" data-aos="fade-up" data-aos-delay="300" aria-label="LinkedIn"><i class="fa-brands fa-linkedin"></i></a>
+                    <a href="https://twitter.com/" class="twitter" data-aos="fade-up" data-aos-delay="400" aria-label="Twitter"><i class="fa-brands fa-x-twitter"></i></a>
+                    <a href="https://www.twitch.tv/" class="twitch" data-aos="fade-up" data-aos-delay="500" aria-label="Twitch"><i class="fa-brands fa-twitch"></i></a>
+                    <a href="https://www.youtube.com/c/" class="youtube" data-aos="fade-up" data-aos-delay="600" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a>
+                    <a href="https://www.instagram.com/" class="instagram" data-aos="fade-up" data-aos-delay="700" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+                    <a href="https://discord.gg/yourlink" class="discord" data-aos="fade-up" data-aos-delay="800" aria-label="Discord"><i class="fa-brands fa-discord"></i></a>
+                     </div>
             </div>
         </div>
     </section>
 
-    <!-- Footer (Loaded Dynamically) -->
     <div id="footer"></div>
 
-    <!-- AOS JavaScript -->
     <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
     <script>
         AOS.init({ offset: 0 });
     </script>
 
-    <!-- Main JavaScript -->
-    <script src="/script.js"></script>
+    <script src="/Links/about/script.js"></script>
 
-    <!-- Dynamic Header/Footer Loader -->
     <script>
-        function loadHTML(divId, url) {
+        function loadHTML(url, elementId) {
             fetch(url)
-                .then(response => response.text())
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error(`HTTP error! Status: ${response.status} while fetching ${url}`);
+                    }
+                    return response.text();
+                 })
                 .then(data => {
-                    document.getElementById(divId).innerHTML = data;
-                })
-                .catch(error => console.error('Error loading HTML:', error));
+                     const element = document.getElementById(elementId);
+                     if (element) {
+                        element.innerHTML = data;
+                        // Re-run header scripts if header was loaded
+                        if (elementId === 'header') {
+                             // Delay slightly ensures elements exist
+                             setTimeout(() => {
+                                try {
+                                     // setHeaderLinks(); // No longer needed
+                                     disableCurrentPageLink();
+                                     // Re-attach hamburger listener if needed, though onclick should work
+                                     // const hamburgIcon = element.querySelector('.hamburg');
+                                     // if(hamburgIcon && typeof toggleMenu === 'function') hamburgIcon.onclick = toggleMenu;
+                                     // const cancelIcon = element.querySelector('.cancel');
+                                     // if(cancelIcon && typeof toggleMenu === 'function') cancelIcon.onclick = toggleMenu;
+                                 } catch (e) {
+                                    console.error("Error executing header scripts:", e);
+                                 }
+                             }, 0);
+                        }
+                     } else {
+                         console.error(`Element with ID '${elementId}' not found.`);
+                     }
+                 })
+                .catch(error => console.error(`Error loading ${url}:`, error));
         }
 
-        // Load header and footer
-        loadHTML('header', '/header.html');
-        loadHTML('footer', '/footer.html');
+        // Load header and footer when the DOM is ready
+        document.addEventListener('DOMContentLoaded', () => {
+             // Use absolute paths from root
+            loadHTML('/header.html', 'header');
+            loadHTML('/footer.html', 'footer');
+        });
     </script>
 
 </body>

@@ -233,3 +233,132 @@ document.addEventListener('DOMContentLoaded', () => {
     }, refreshIntervalMinutes * 60 * 1000);
 
 }); // End DOMContentLoaded
+
+// Service status monitoring
+const services = {
+    github: {
+        name: 'GitHub',
+        url: 'https://github.com',
+        icon: '/assets/github.png'
+    },
+    facebook: {
+        name: 'Facebook',
+        url: 'https://facebook.com',
+        icon: '/assets/facebook.png'
+    },
+    linkedin: {
+        name: 'LinkedIn',
+        url: 'https://linkedin.com',
+        icon: '/assets/linkedin.png'
+    },
+    twitter: {
+        name: 'Twitter',
+        url: 'https://twitter.com',
+        icon: '/assets/twitter.png'
+    },
+    twitch: {
+        name: 'Twitch',
+        url: 'https://twitch.tv',
+        icon: '/assets/twitch.png'
+    },
+    youtube: {
+        name: 'YouTube',
+        url: 'https://youtube.com',
+        icon: '/assets/youtube.png'
+    },
+    instagram: {
+        name: 'Instagram',
+        url: 'https://instagram.com',
+        icon: '/assets/instagram.png'
+    },
+    discord: {
+        name: 'Discord',
+        url: 'https://discord.com',
+        icon: '/assets/discord.png'
+    }
+};
+
+// Check service status
+async function checkServiceStatus(service) {
+    try {
+        const response = await fetch(service.url, {
+            method: 'HEAD',
+            mode: 'no-cors'
+        });
+        return 'online';
+    } catch (error) {
+        return 'offline';
+    }
+}
+
+// Update status indicator
+function updateStatusIndicator(serviceId, status) {
+    const indicator = document.querySelector(`[data-service-id="${serviceId}"]`);
+    if (indicator) {
+        indicator.setAttribute('data-status', status);
+        indicator.title = status === 'online' ? 'Online' : 'Offline';
+    }
+}
+
+// Monitor all services
+async function monitorServices() {
+    for (const [serviceId, service] of Object.entries(services)) {
+        const status = await checkServiceStatus(service);
+        updateStatusIndicator(serviceId, status);
+    }
+}
+
+// Start monitoring
+document.addEventListener('DOMContentLoaded', () => {
+    // Initial check
+    monitorServices();
+    
+    // Check every 5 minutes
+    setInterval(monitorServices, 300000);
+});
+
+// Typewriter effect
+const roles = [
+    "Web Developer", "Graphic Designer", "Content Creator", "Tech Enthusiast", "Software Sorcerer",
+    "Cyber Guardian", "Network Navigator", "AI Experimenter"
+];
+
+let currentRoleIndex = Math.floor(Math.random() * roles.length);
+
+function typeText(text, index = 0) {
+    const typewriterText = document.getElementById("typewriter-text");
+    if (!typewriterText) return;
+
+    if (index < text.length) {
+        typewriterText.textContent = text.substring(0, index + 1);
+        setTimeout(() => typeText(text, index + 1), 100);
+    } else {
+        setTimeout(() => deleteText(text), 2000);
+    }
+}
+
+function deleteText(text, index = text.length) {
+    const typewriterText = document.getElementById("typewriter-text");
+    if (!typewriterText) return;
+
+    if (index >= 0) {
+        typewriterText.textContent = text.substring(0, index);
+        setTimeout(() => deleteText(text, index - 1), 50);
+    } else {
+        let nextRoleIndex;
+        do {
+            nextRoleIndex = Math.floor(Math.random() * roles.length);
+        } while (nextRoleIndex === currentRoleIndex && roles.length > 1);
+        currentRoleIndex = nextRoleIndex;
+
+        setTimeout(() => typeText(roles[currentRoleIndex]), 500);
+    }
+}
+
+// Start typewriter effect
+document.addEventListener("DOMContentLoaded", () => {
+    const typewriterText = document.getElementById("typewriter-text");
+    if (typewriterText) {
+        typeText(roles[currentRoleIndex]);
+    }
+});

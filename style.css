@@ -14,38 +14,37 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    font-family: 'Poppins', sans-serif; /* Ensure Poppins font is applied globally */
 }
 
 /* General styles */
 body {
-    font-family: Arial, sans-serif;
     background: var(--background-gradient);
-    overflow-x: hidden;
-    height: 100vh;
+    overflow-x: hidden; /* Prevent horizontal scroll */
+    min-height: 100vh; /* Ensure body takes full viewport height */
 }
 
-/* Navigation Bar */
+/* --- Navigation (Common styles from header.html, included here for completeness if not using dynamic loading for style links) --- */
+/* NOTE: These nav styles are primarily controlled by header.html now */
 .nav-container {
-    position: fixed;
-    width: 100%;
-    top: 0;
-    left: 0;
-    background: #333;
-    color: #fff;
+    /* Styles are primarily in header.html */
+    /* Basic layout for fallback or if header isn't loaded */
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around;
     align-items: center;
     padding: 10px 20px;
+    background-color: #333; /* Example background */
+    color: white; /* Example text color */
+    position: sticky; /* Keep nav at the top */
+    top: 0;
     z-index: 1000;
-    transition: background-color var(--transition-speed) ease-in-out; /* Smooth transition for background */
 }
 
 .logo {
     font-weight: bolder;
-    font-size: 2rem;
-    color: var(--text-color);
-    text-decoration: none; /* Ensures link appears unstyled */
-    cursor: pointer; /* Still functions as a link */
+    font-size: 1.5em; /* Match index.html */
+    color: var(--text-color); /* Use variable */
+    text-decoration: none;
 }
 
 .logo span {
@@ -53,168 +52,429 @@ body {
     text-shadow: 0 0 10px var(--primary-color);
 }
 
-.links {
+.nav-container .links {
     display: flex;
-    gap: 15px;
+    gap: 1rem; /* Adjust spacing as needed */
+    align-items: center;
 }
 
-.link a {
-    color: #fff;
+.nav-container .links .link a {
+    color: white; /* Example color */
     text-decoration: none;
-    font-size: 1.2rem;
+    font-size: 1.1rem; /* Adjust as needed */
     font-weight: 500;
     transition: color var(--transition-speed) linear;
+    position: relative; /* Needed for the underline effect */
 }
 
-/* Navigation Hover Effects */
-.link a:hover {
-    color: var(--primary-color);
-    text-shadow: 0 0 5px var(--primary-color);
+/* Underline Hover Effect */
+.nav-container .links .link a::before {
+    content: "";
+    position: absolute;
+    bottom: -3px;
+    left: 0;
+    width: 0%;
+    height: 2px; /* Underline thickness */
+    background-color: var(--primary-color);
+    transition: width var(--transition-speed) ease-in-out;
 }
 
-/* Responsive Hamburger Menu */
+.nav-container .links .link a:hover::before {
+    width: 100%;
+}
+
+.nav-container .links .link a:hover {
+    color: var(--primary-color); /* Hover color */
+}
+
+/* Contact Button Style */
+.nav-container .links .contact-btn a {
+    background-color: transparent;
+    padding: 8px 18px; /* Adjust padding */
+    border-radius: 20px;
+    border: 2px solid var(--primary-color);
+    color: var(--primary-color); /* Text color matches border */
+    transition: all var(--transition-speed) linear;
+}
+
+.nav-container .links .contact-btn a:hover {
+    background-color: var(--primary-color);
+    color: white; /* Text color on hover */
+    border-color: var(--primary-color); /* Keep border color consistent */
+}
+
+/* Disabled Link Style */
+.nav-container .links .link a.disabled-link {
+    color: grey;
+    pointer-events: none; /* Disable clicking */
+    cursor: default;
+}
+.nav-container .links .link a.disabled-link::before {
+    width: 0; /* No hover effect */
+}
+
+/* Hamburger Menu Icon */
 .hamburg {
-    display: none;
+    display: none; /* Hidden by default */
     cursor: pointer;
-    font-size: 2rem;
-    color: var(--text-color);
-    position: absolute;
-    right: 20px;
-    top: 20px;
+    font-size: 1.8rem;
+    color: var(--primary-color); /* Match logo span color */
 }
 
+/* Dropdown Menu */
 .dropdown {
-    display: none;
+    display: none; /* Controlled by JS */
     position: absolute;
-    top: 60px;
+    top: 60px; /* Adjust based on nav height */
     left: 0;
     width: 100%;
-    background-color: #333;
-    z-index: 1000;
-    transform: translateY(-500px);
-    height: auto;
-    backdrop-filter: brightness(40%) blur(3px);
-    box-shadow: 0 0 20px #000;
-    transition: transform var(--transition-speed) linear;
+    background-color: rgba(51, 51, 51, 0.9); /* Semi-transparent background */
+    backdrop-filter: blur(5px);
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+    z-index: 999;
+    transform: translateY(-150%); /* Start hidden way above */
+    transition: transform 0.3s ease-in-out;
+    overflow: hidden; /* Prevent content spill during animation */
 }
 
 .dropdown .links {
+    display: flex;
     flex-direction: column;
-    gap: 10px;
-    padding: 10px;
+    padding: 10px 0; /* Vertical padding */
 }
 
 .dropdown .links a {
-    color: #fff;
+    color: white;
     text-decoration: none;
-    padding: 15px 0;
-    align-items: center;
+    padding: 12px 20px; /* Padding for touch targets */
+    text-align: center;
     transition: background-color var(--transition-speed) linear;
+    font-size: 1.1rem;
+    position: relative; /* For disabled link */
+}
+.dropdown .links a.disabled-link {
+    color: grey;
+    pointer-events: none;
+    cursor: default;
 }
 
-/* Main Container */
+.dropdown .links a:hover:not(.disabled-link) {
+    background-color: var(--primary-color); /* Hover background */
+}
+
+.cancel {
+    /* Styles are in header.html */
+    cursor: pointer;
+    position: absolute;
+    top: 15px;
+    right: 20px;
+    color: white;
+    font-size: 1.8rem;
+}
+/* --- End Navigation Styles --- */
+
+/* --- Main Container (Index Page Specific Adjustments) --- */
 .main-container {
     display: flex;
-    flex-direction: column;
+    flex-direction: column-reverse; /* Change order: Content first, then Image */
     align-items: center;
     text-align: center;
     justify-content: center;
     width: 100%;
-    min-height: 100vh;
-    position: relative;
-    padding: 20px;
+    min-height: 90vh; /* Use remaining height below nav */
+    padding: 40px 20px; /* Add more padding top/bottom */
 }
 
-.image {
-    width: 95%; /* Reduced size slightly (approx. quarter of an inch smaller) */
-    height: 95vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.gif-image {
-    width: 75%; /* Reduced size slightly */
-    height: auto;
-    object-fit: cover;
-}
-
+/* Content Area */
 .content {
     width: 90%;
     max-width: 800px;
     text-align: center;
-    margin-top: 20px;
     color: var(--text-color);
+    order: 1; /* Ensure content comes first visually in the column */
+    margin-bottom: 30px; /* Add space below content (above image) */
 }
 
-h1 {
-    font-size: 2.5em;
-    margin-top: 10px;
+.content h1 {
+    font-size: clamp(2em, 5vw, 2.8em); /* Responsive font size */
+    margin-bottom: 10px; /* Space below h1 */
+    color: var(--text-color); /* Main text color */
+}
+
+.content h1 span {
     color: var(--primary-color);
-    text-shadow: 0 0 10px var(--primary-color);
+    text-shadow: 0 0 8px rgba(109, 67, 0, 0.7); /* Softer shadow */
 }
 
 .typewriter {
-    font-size: 1.5em;
+    font-size: clamp(1.2em, 3vw, 1.8em); /* Responsive font size */
     font-weight: bold;
-    color: #333;
-    margin: 10px 0;
+    color: #333; /* Dark grey for contrast */
+    margin: 10px 0 20px 0; /* Adjust margins */
+    min-height: 1.5em; /* Prevent layout shift */
 }
 
-/* Social Links with Staggered Fade-in Effect */
+.typewriter span {
+    color: var(--primary-color); /* Match h1 span */
+    /* text-shadow: 0 0 5px rgba(109, 67, 0, 0.7); */ /* Optional shadow */
+}
+
+.content p {
+    font-size: clamp(0.9rem, 1.5vw, 1.1rem); /* Responsive font size */
+    margin-bottom: 30px; /* Space below paragraph */
+    line-height: 1.6; /* Improve readability */
+}
+
+/* Social Links (Now above the image due to flex-direction: column-reverse) */
+.social-links {
+    order: 2; /* Place social links below main text content */
+    margin-bottom: 30px; /* Space below social links */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 15px; /* Spacing between icons */
+    flex-wrap: wrap; /* Allow wrapping on smaller screens */
+}
+
 .social-links a {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    width: 50px;
-    height: 50px;
+    width: 45px; /* Slightly smaller */
+    height: 45px; /* Slightly smaller */
     border-radius: 50%;
     border: 2px solid var(--primary-color);
-    font-size: 1.5em;
-    transition: transform 0.3s ease-in-out;
-    opacity: 0; /* Initially hidden */
-    animation: fadeIn 1s ease-in-out forwards;
-    text-decoration: none; /* Removes any underlining */
+    font-size: 1.4em; /* Adjust icon size */
+    transition: transform 0.3s ease-in-out, background-color 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+    text-decoration: none;
 }
 
-/* Restore original social link colors */
-.social-links .fa-facebook { color: #1877f2; }
-.social-links .fa-linkedin { color: #0077b5; }
-.social-links .fa-x-twitter { color: #000; }
-.social-links .fa-twitch { color: #9146ff; }
-.social-links .fa-youtube { color: red; }
-.social-links .fa-instagram { color: #e1306c; }
-.social-links .fa-discord { color: #5865f2; }
-.social-links .fa-tiktok { color: #69c9d0; }
+/* Original Social Link Colors */
+.social-links .fa-github { color: #333; } /* GitHub Grey/Black */
+.social-links .fa-facebook { color: #1877F2; } /* Facebook Blue */
+.social-links .fa-linkedin { color: #0077B5; } /* LinkedIn Blue */
+.social-links .fa-x-twitter { color: #000000; } /* Twitter/X Black */
+.social-links .fa-twitch { color: #9146FF; } /* Twitch Purple */
+.social-links .fa-youtube { color: #FF0000; } /* YouTube Red */
+.social-links .fa-instagram { color: #E1306C; } /* Instagram Pink */
+.social-links .fa-discord { color: #5865F2; } /* Discord Blue */
+.social-links .fa-tiktok { color: #000000; } /* TikTok Black */
 
-@keyframes fadeIn {
-    from { opacity: 0; transform: translateY(10px); }
-    to { opacity: 1; transform: translateY(0); }
+.social-links a:hover {
+    transform: scale(1.15); /* Slightly larger hover effect */
+    background-color: var(--primary-color); /* Background on hover */
+    box-shadow: 0 0 10px rgba(109, 67, 0, 0.7); /* Add shadow on hover */
+}
+.social-links a:hover i {
+     color: white; /* Icon color changes to white on hover */
+}
+
+
+/* Image Area */
+.image {
+    width: 80%; /* Adjusted width for the container */
+    max-width: 450px; /* Max width for the image container */
+    height: auto; /* Auto height */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    order: 3; /* Ensure image comes last visually */
+    margin-top: 20px; /* Space above image */
+}
+
+.gif-image {
+    width: 70%; /* Make the GIF slightly smaller within its container */
+    max-width: 100%; /* Ensure it doesn't exceed container */
+    height: auto;
+    object-fit: contain; /* Use contain to ensure aspect ratio is kept */
+    border-radius: 8px; /* Optional: slightly rounded corners */
 }
 
 /* Responsive Styles */
 @media (max-width: 768px) {
-    .links {
-        display: none;
+    .nav-container .links {
+        display: none; /* Hide desktop links */
+    }
+    .hamburg {
+        display: block; /* Show hamburger icon */
+    }
+    /* Ensure dropdown is managed by JS, don't force display here */
+
+    .main-container {
+        padding: 20px 15px; /* Adjust padding */
+        min-height: auto; /* Allow height to adjust */
+        justify-content: flex-start; /* Align items to top */
     }
 
+    .content {
+        width: 100%; /* Full width on smaller screens */
+        order: 1;
+        margin-bottom: 20px;
+    }
+    .social-links {
+        order: 2;
+        margin-bottom: 20px;
+    }
+    .image {
+        width: 90%; /* Adjust image container width */
+        max-width: 350px; /* Smaller max width */
+        order: 3;
+        margin-top: 0; /* Remove top margin if needed */
+    }
+    .gif-image {
+        width: 80%; /* Adjust gif size within container */
+    }
+
+    .content h1 {
+        font-size: 1.8em;
+    }
+    .typewriter {
+        font-size: 1.3em;
+    }
+    .content p {
+        font-size: 0.9rem;
+    }
+    .social-links a {
+        width: 40px;
+        height: 40px;
+        font-size: 1.2em;
+    }
+}
+
+/* Dashboard Styles */
+.dashboard-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem;
+}
+
+.dashboard-container h1 {
+    text-align: center;
+    margin-bottom: 2rem;
+    color: var(--primary-color);
+}
+
+.services-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 1.5rem;
+    padding: 1rem;
+}
+
+.service-card {
+    background: white;
+    border-radius: 10px;
+    padding: 1.5rem;
+    text-decoration: none;
+    color: var(--text-color);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform var(--transition-speed) ease;
+}
+
+.service-card:hover {
+    transform: translateY(-5px);
+}
+
+.service-icon-wrapper {
+    position: relative;
+    margin-bottom: 1rem;
+}
+
+.service-icon {
+    width: 64px;
+    height: 64px;
+    object-fit: contain;
+}
+
+.status-indicator {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background-color: gray;
+}
+
+.status-indicator[data-status="online"] {
+    background-color: #4CAF50;
+}
+
+.status-indicator[data-status="offline"] {
+    background-color: #f44336;
+}
+
+.service-content h3 {
+    margin-bottom: 0.5rem;
+    color: var(--primary-color);
+}
+
+.service-content p {
+    font-size: 0.9rem;
+    color: #666;
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+    .nav-container .links {
+        display: none;
+    }
+    
     .hamburg {
         display: block;
     }
 
-    .dropdown {
-        display: flex;
+    .main-container {
+        padding: 20px 15px;
+        min-height: auto;
+        justify-content: flex-start;
     }
 
     .content {
-        margin-top: 20px;
+        width: 100%;
+        order: 1;
+        margin-bottom: 20px;
     }
 
-    h1 {
-        font-size: 2em;
+    .social-links {
+        order: 2;
+        margin-bottom: 20px;
+    }
+
+    .image {
+        width: 90%;
+        max-width: 350px;
+        order: 3;
+        margin-top: 0;
+    }
+
+    .gif-image {
+        width: 80%;
+    }
+
+    .content h1 {
+        font-size: 1.8em;
     }
 
     .typewriter {
+        font-size: 1.3em;
+    }
+
+    .content p {
+        font-size: 0.9rem;
+    }
+
+    .social-links a {
+        width: 40px;
+        height: 40px;
         font-size: 1.2em;
+    }
+
+    .services-grid {
+        grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    }
+
+    .dashboard-container {
+        padding: 1rem;
     }
 }
