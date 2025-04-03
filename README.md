@@ -1,27 +1,28 @@
 # TopherTek Website
 
-Personal website and service dashboard hosted on Cloudflare Pages.
+A modern, responsive website for TopherTek services.
 
 ## Project Structure
 
 ```
-/
-├── index.html              # Main homepage
-├── style.css              # Main stylesheet
-├── script.js              # Main JavaScript
-├── wrangler.toml          # Cloudflare Pages configuration
-├── .gitignore            # Git ignore rules
-├── README.md             # This file
-└── links/                # Additional pages
-    ├── about/
-    ├── skills/
-    ├── services/
-    ├── blogs/
-    ├── contact-us/
-    └── tophtertek/       # Dashboard
-        ├── Dash.html
-        ├── style.css
-        └── script.js
+TopherTek/
+├── index.html          # Main entry point
+├── style.css          # Global styles
+├── script.js          # Main JavaScript
+├── header.html        # Common header
+├── footer.html        # Common footer
+├── _headers          # Cloudflare Pages headers
+├── _redirects        # Cloudflare Pages redirects
+├── site.webmanifest  # PWA manifest
+├── favicon.ico       # Site favicon
+├── favicon.svg       # SVG favicon
+├── apple-touch-icon.png  # iOS icon
+├── web-app-manifest-192x192.png  # PWA icon (small)
+├── web-app-manifest-512x512.png  # PWA icon (large)
+└── Links/            # Service links directory
+    └── TopherTek/    # Main service links
+        ├── Dash.html # Dashboard
+        └── ...       # Other service pages
 ```
 
 ## Setup Instructions
@@ -49,16 +50,14 @@ This site is deployed on Cloudflare Pages. The deployment process is automated:
 2. Cloudflare Pages automatically builds and deploys
 3. Changes are live within minutes
 
-### Configuration Files
+## Configuration Files
 
-- `wrangler.toml`: Cloudflare Pages configuration
-  - Security headers
-  - Redirects
-  - Build settings
+The project uses the following configuration files:
 
+- `_headers`: Defines security headers and content types for Cloudflare Pages
+- `_redirects`: Handles URL routing and redirects
+- `site.webmanifest`: PWA configuration
 - `.gitignore`: Git ignore rules
-  - Excludes unnecessary files
-  - Prevents sensitive data from being committed
 
 ## Development Guidelines
 
