@@ -33,7 +33,7 @@
                     I'm a <span id="typewriter-text"></span>
                 </div>
                 <p data-aos="flip-up" data-aos-duration="1000" data-aos-delay="1000">
-                    Detailed information about TopherTek goes here. I specialize in solving tech problems, developing innovative solutions, and helping businesses with IT and web development needs.
+                    I specialize in solving tech problems, developing innovative solutions, and helping businesses with IT and web development needs.
                 </p>
 
                 <div class="social-links">
@@ -57,7 +57,7 @@
         AOS.init({ offset: 0 });
     </script>
 
-    <script src="/Links/about/script.js"></script>
+    <script src="/script.js"></script>
 
     <script>
         function loadHTML(url, elementId) {
@@ -77,13 +77,7 @@
                              // Delay slightly ensures elements exist
                              setTimeout(() => {
                                 try {
-                                     // setHeaderLinks(); // No longer needed
                                      disableCurrentPageLink();
-                                     // Re-attach hamburger listener if needed, though onclick should work
-                                     // const hamburgIcon = element.querySelector('.hamburg');
-                                     // if(hamburgIcon && typeof toggleMenu === 'function') hamburgIcon.onclick = toggleMenu;
-                                     // const cancelIcon = element.querySelector('.cancel');
-                                     // if(cancelIcon && typeof toggleMenu === 'function') cancelIcon.onclick = toggleMenu;
                                  } catch (e) {
                                     console.error("Error executing header scripts:", e);
                                  }
