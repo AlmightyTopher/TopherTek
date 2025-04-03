@@ -33,4 +33,24 @@ out/
 # Environment variables
 .env
 .env.local
-.env.*.local 
+.env.*.local
+
+# Temporary files
+*.tmp
+*.temp
+*.bak
+
+# Unnecessary directories
+Save for later/
+other/
+.github/
+
+# Large media files
+*.gif
+*.webp
+*.png
+*.ico
+*.svg
+
+# Local development files
+update-website.bat 

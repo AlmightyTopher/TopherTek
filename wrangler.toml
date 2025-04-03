@@ -4,6 +4,9 @@ bucket = "."
 [build]
 command = ""
 
+[pages]
+pages_build_output_dir = "."
+
 [[headers]]
 for = "/*"
 [headers.values]
