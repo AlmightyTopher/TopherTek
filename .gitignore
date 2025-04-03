@@ -43,14 +43,6 @@ out/
 # Unnecessary directories
 Save for later/
 other/
-.github/
 
-# Large media files
-*.gif
-*.webp
-*.png
-*.ico
-*.svg
-
-# Local development files
+# Development files
 update-website.bat 
