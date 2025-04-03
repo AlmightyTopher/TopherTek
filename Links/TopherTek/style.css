@@ -1,0 +1,104 @@
+/* Dashboard Styles */
+:root {
+    --primary-color: rgb(109, 67, 0);
+    --secondary-color: rgb(254, 215, 173);
+    --text-color: black;
+    --background-gradient: linear-gradient(to right, rgb(255,255,255), var(--secondary-color));
+    --transition-speed: 0.2s;
+}
+
+* {
+    padding: 0;
+    margin: 0;
+    font-family: 'Poppins', sans-serif;
+    box-sizing: border-box;
+}
+
+body {
+    background: var(--background-gradient);
+    min-height: 100vh;
+    overflow-x: hidden;
+}
+
+.dashboard-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem;
+}
+
+.dashboard-container h1 {
+    text-align: center;
+    margin-bottom: 2rem;
+    color: var(--primary-color);
+}
+
+.services-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 1.5rem;
+    padding: 1rem;
+}
+
+.service-card {
+    background: white;
+    border-radius: 10px;
+    padding: 1.5rem;
+    text-decoration: none;
+    color: var(--text-color);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform var(--transition-speed) ease;
+}
+
+.service-card:hover {
+    transform: translateY(-5px);
+}
+
+.service-icon-wrapper {
+    position: relative;
+    margin-bottom: 1rem;
+}
+
+.service-icon {
+    width: 64px;
+    height: 64px;
+    object-fit: contain;
+}
+
+.status-indicator {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background-color: gray;
+}
+
+.status-indicator[data-status="online"] {
+    background-color: #4CAF50;
+}
+
+.status-indicator[data-status="offline"] {
+    background-color: #f44336;
+}
+
+.service-content h3 {
+    margin-bottom: 0.5rem;
+    color: var(--primary-color);
+}
+
+.service-content p {
+    font-size: 0.9rem;
+    color: #666;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .services-grid {
+        grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    }
+    
+    .dashboard-container {
+        padding: 1rem;
+    }
+} 
