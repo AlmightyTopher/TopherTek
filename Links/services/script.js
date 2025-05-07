@@ -1,4 +1,11 @@
+// handles loading of service descriptions
 document.addEventListener("DOMContentLoaded", () => {
+
+// handles loading of service categories
+const serviceCategories = ["category1", "category2", "category3"];
+
+function loadCategories() {
+ for (const category of serviceCategories) { console.log(category); }
     const words = [ 
         "Web Developer",
         "Graphic Designer",
@@ -89,6 +96,37 @@ document.addEventListener("DOMContentLoaded", () => {
     typeWriterEffect(words[firstIndex]);
 });
 
+function loadServiceDescriptions() {
+  const serviceDescriptions = [
+    {
+      name: "Service 1",
+      description: "Description of service 1",
+    },
+    {
+      name: "Service 2",
+      description: "Description of service 2",
+    },
+    { name: "Service 3", description: "Description of service 3" },
+  ];
+  for (const description of serviceDescriptions) {
+    console.log(`Service Name: ${description.name}, Description: ${description.description}`);
+  }
+}
+
+// placeholder for checking all services
+function checkServices() {
+ showLoading();
+  const error = true; // Simulate an error
+  try {
+    if (error) { throw new Error('error checking services'); }
+ hideLoading();
+  } catch (error) {
+    handleServiceError(error.message);
+  }
+function filterServices(category) {
+  console.log(category);
+}
+
 // ✅ Mobile Navigation Toggle (Same as Original)
 function hamburg(){
     document.querySelector(".dropdown").style.transform = "translateY(0px)";
@@ -96,4 +134,34 @@ function hamburg(){
 
 function cancel(){
     document.querySelector(".dropdown").style.transform = "translateY(-500px)";
+}
+
+// shows the loading state of the services
+function showLoading() {
+    console.log("Loading services...");
+    // TODO: Implement actual loading state display (e.g., show spinner, disable button)
+}
+
+// hides the loading state of the services
+function hideLoading() {
+    // TODO: Implement actual loading state hiding (e.g., hide spinner, enable button)
+}
+
+// handles errors from service status checks
+function handleServiceError(message) {
+    hideLoading(message);
+}
+
+// filters services by category
+loadCategories();
+
+loadServiceDescriptions();
+filterServices("category1");
+
+// caches the status of services
+function cacheServiceStatuses() {
+  console.log("caching service statuses");
+}
+function searchServices(query) {
+  console.log(query);
 }
