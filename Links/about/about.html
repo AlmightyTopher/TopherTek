@@ -6,21 +6,29 @@
     <title>About - TopherTech</title>
     <link rel="stylesheet" href="/style.css">
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="nerdy-style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=VT323&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css">
 </head>
 <body>
+    <canvas id="matrix-bg"></canvas>
     <div id="header"></div>
-    <main class="about-page">
-        <section class="about-section">
-            <h1>About TopherTech</h1>
+    <main class="about-page nerd-container">
+        <section class="about-section terminal-window">
+            <h1 id="typing-effect">About TopherTech</h1>
+            <pre class="ascii-art">
+  _   _   _   _   _   _   _   _   _   _  
+ / \ / \ / \ / \ / \ / \ / \ / \ / \ / \ 
+( T | o | p | h | e | r | T | e | c | h )
+ \_/ \_/ \_/ \_/ \_/ \_/ \_/ \_/ \_/ \_/ 
+            </pre>
             <p>Hi, I’m Topher. And yes, I am the guy your cousin told you about who "fixed their computer with, like, wizard magic or something." It’s not magic—it’s just knowing which wire not to lick.</p>
             <p>Welcome to TopherTech, where one caffeine-fueled human handles everything from rogue drivers to resurrecting bricked devices. Whether you’ve got a PC that won’t boot, a smart plug that’s dumber than a rock, or a “my Wi-Fi just hates me” situation—we’re here to make tech your friend again.</p>
         </section>
-        <section class="services-section">
-            <h2>🛠️ What I Do</h2>
+        <section class="services-section terminal-window">
+            <h2>// What I Do</h2>
             <ul>
                 <li>
                     <h3>Computer Repair & Optimization</h3>
@@ -48,9 +56,9 @@
                 </li>
             </ul>
         </section>
-        <section class="closing-section">
-            <p>I run TopherTech with equal parts expertise, sarcasm, and “try turning it off and on again” energy. Whether you're tech-savvy or tech-cursed, I’ll meet you where you're at—figuratively (and sometimes literally, if you’re local).</p>
-            <p>So if your computer sounds like a jet engine, your emails won’t sync, or your smart home became self-aware… hit me up. I’m probably already debugging something weird anyway.</p>
+        <section class="closing-section terminal-window">
+            <p>// I run TopherTech with equal parts expertise, sarcasm, and “try turning it off and on again” energy. Whether you're tech-savvy or tech-cursed, I’ll meet you where you're at—figuratively (and sometimes literally, if you’re local).</p>
+            <p>// So if your computer sounds like a jet engine, your emails won’t sync, or your smart home became self-aware… hit me up. I’m probably already debugging something weird anyway.</p>
             <p>Let’s make your tech stop sucking.</p>
         </section>
     </main>
@@ -60,6 +68,46 @@
     <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
     <script>
         AOS.init();
+
+        const canvas = document.getElementById('matrix-bg');
+        const ctx = canvas.getContext('2d');
+
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+
+        const katakana = 'アァカサタナハマヤャラワガザダバパイィキシチニヒミリヰギジヂビピウゥクスツヌフムユュルグズブプエェケセテネヘメレヱゲゼデベペオォコソトノホモヨョロヲゴゾドボポヴッン';
+        const latin = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+        const nums = '0123456789';
+        const alphabet = katakana + latin + nums;
+
+        const fontSize = 16;
+        const columns = canvas.width / fontSize;
+
+        const rainDrops = [];
+
+        for (let x = 0; x < columns; x++) {
+            rainDrops[x] = 1;
+        }
+
+        const draw = () => {
+            ctx.fillStyle = 'rgba(0, 0, 0, 0.05)';
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+            ctx.fillStyle = '#0F0';
+            ctx.font = fontSize + 'px monospace';
+
+            for (let i = 0; i < rainDrops.length; i++) {
+                const text = alphabet.charAt(Math.floor(Math.random() * alphabet.length));
+                ctx.fillText(text, i * fontSize, rainDrops[i] * fontSize);
+
+                if (rainDrops[i] * fontSize > canvas.height && Math.random() > 0.975) {
+                    rainDrops[i] = 0;
+                }
+                rainDrops[i]++;
+            }
+        };
+
+        setInterval(draw, 30);
     </script>
     <script>
         fetch('/header.html')

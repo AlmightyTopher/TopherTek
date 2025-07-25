@@ -1,0 +1,107 @@
+/* General Body Styles */
+body {
+    background-color: #0a0a0a;
+    color: #00ff41;
+    font-family: 'VT323', monospace, 'Courier New', Courier, monospace;
+    text-shadow: 0 0 5px #00ff41, 0 0 10px #00ff41;
+}
+
+/* Page container */
+.nerd-container {
+    padding: 20px;
+    max-width: 900px;
+    margin: 0 auto;
+    border: 2px solid #00ff41;
+    box-shadow: 0 0 15px #00ff41;
+    background-color: rgba(0, 20, 0, 0.85);
+    position: relative;
+    z-index: 2;
+}
+
+/* Animated Background */
+#matrix-bg {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    background-color: #000;
+}
+
+/* Header with Typing Effect */
+h1#typing-effect {
+    display: inline-block;
+    border-right: 3px solid #00ff41;
+    white-space: nowrap;
+    overflow: hidden;
+    animation: typing 3s steps(30, end), blink-caret .75s step-end infinite;
+}
+
+/* Typing animation */
+@keyframes typing {
+    from { width: 0 }
+    to { width: 100% }
+}
+
+@keyframes blink-caret {
+    from, to { border-color: transparent }
+    50% { border-color: #00ff41; }
+}
+
+/* Terminal Window Style for Sections */
+.terminal-window {
+    border: 2px solid #00ff41;
+    padding: 15px;
+    margin-bottom: 25px;
+    background-color: #051a05;
+    box-shadow: inset 0 0 10px #00ff41;
+}
+
+.terminal-window h2 {
+    color: #00ff41;
+    margin-top: 0;
+    text-align: center;
+    border-bottom: 1px solid #00ff41;
+    padding-bottom: 10px;
+}
+
+/* ASCII Art Styling */
+pre.ascii-art {
+    color: #00ff41;
+    text-align: center;
+    font-size: 14px;
+    line-height: 1.2;
+    margin: 20px 0;
+    text-shadow: none; /* Keep ASCII art clean */
+}
+
+/* Unordered list styling for services */
+.services-section ul {
+    list-style-type: none; /* Remove default bullets */
+    padding-left: 0;
+}
+
+.services-section li::before {
+    content: '>> '; /* Custom bullet point */
+    color: #00ff41;
+    font-weight: bold;
+}
+
+.services-section h3 {
+    color: #00ff41;
+    display: inline-block;
+}
+
+.closing-section p {
+    font-style: italic;
+    color: #9affab;
+}
+
+.closing-section p:last-child {
+    font-weight: bold;
+    text-align: center;
+    font-size: 1.2em;
+    color: #fff;
+    text-shadow: 0 0 10px #00ff41;
+}
