@@ -3,100 +3,76 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css">
-
-    <title>About - TopherTek</title>
-
+    <title>About - TopherTech</title>
     <link rel="stylesheet" href="/style.css">
+    <link rel="stylesheet" href="style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
-
-    </head>
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css">
+</head>
 <body>
-
     <div id="header"></div>
-
-    <section>
-        <div class="main-container">
-            <div class="image" data-aos="zoom-in-right" data-aos-duration="2500">
-                 <img src="/your-gif.gif" alt="Animated GIF" class="gif-image">
-            </div>
-
-            <div class="content">
-                <h1 data-aos="fade-left" data-aos-duration="1000" data-aos-delay="800">
-                    About <span>TopherTek</span>
-                </h1>
-                 <div class="typewriter" data-aos="fade-right" data-aos-duration="1000" data-aos-delay="900">
-                    I'm a <span id="typewriter-text"></span>
-                </div>
-                <p data-aos="flip-up" data-aos-duration="1000" data-aos-delay="1000">
-                    I specialize in solving tech problems, developing innovative solutions, and helping businesses with IT and web development needs.
-                </p>
-
-                <div class="social-links">
-                    <a href="https://github.com/" class="github" data-aos="fade-up" data-aos-delay="100" aria-label="GitHub"><i class="fa-brands fa-github"></i></a>
-                    <a href="https://facebook.com/" class="facebook" data-aos="fade-up" data-aos-delay="200" aria-label="Facebook"><i class="fa-brands fa-facebook"></i></a>
-                    <a href="https://linkedin.com/in/" class="linkedin" data-aos="fade-up" data-aos-delay="300" aria-label="LinkedIn"><i class="fa-brands fa-linkedin"></i></a>
-                    <a href="https://twitter.com/" class="twitter" data-aos="fade-up" data-aos-delay="400" aria-label="Twitter"><i class="fa-brands fa-x-twitter"></i></a>
-                    <a href="https://www.twitch.tv/" class="twitch" data-aos="fade-up" data-aos-delay="500" aria-label="Twitch"><i class="fa-brands fa-twitch"></i></a>
-                    <a href="https://www.youtube.com/c/" class="youtube" data-aos="fade-up" data-aos-delay="600" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a>
-                    <a href="https://www.instagram.com/" class="instagram" data-aos="fade-up" data-aos-delay="700" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
-                    <a href="https://discord.gg/yourlink" class="discord" data-aos="fade-up" data-aos-delay="800" aria-label="Discord"><i class="fa-brands fa-discord"></i></a>
-                     </div>
-            </div>
-        </div>
-    </section>
-
+    <main class="about-page">
+        <section class="about-section">
+            <h1>About TopherTech</h1>
+            <p>Hi, I’m Topher. And yes, I am the guy your cousin told you about who "fixed their computer with, like, wizard magic or something." It’s not magic—it’s just knowing which wire not to lick.</p>
+            <p>Welcome to TopherTech, where one caffeine-fueled human handles everything from rogue drivers to resurrecting bricked devices. Whether you’ve got a PC that won’t boot, a smart plug that’s dumber than a rock, or a “my Wi-Fi just hates me” situation—we’re here to make tech your friend again.</p>
+        </section>
+        <section class="services-section">
+            <h2>🛠️ What I Do</h2>
+            <ul>
+                <li>
+                    <h3>Computer Repair & Optimization</h3>
+                    <p>Speed up, clean up, or bring back machines from the dead (no seances required—just safe mode and some grit).</p>
+                </li>
+                <li>
+                    <h3>Custom PC Building</h3>
+                    <p>Need a beast for gaming, streaming, AI, or running 46 Chrome tabs with YouTube playing in the background? I’ll build it. RGB included, because performance glows matter.</p>
+                </li>
+                <li>
+                    <h3>Smart Home Setup & Automation</h3>
+                    <p>From lights that obey voice commands to automating your AC like a nerdy wizard—if it plugs in and has an app, I’ll make it behave.</p>
+                </li>
+                <li>
+                    <h3>Small Business Tech Support</h3>
+                    <p>I’ll keep your POS from acting like one. Full-stack support without the corporate nonsense.</p>
+                </li>
+                <li>
+                    <h3>Web & Script Services</h3>
+                    <p>Need a quick website, automation scripts, or a bot to remind you to drink water and touch grass? I code that.</p>
+                </li>
+                <li>
+                    <h3>Tech Consultation</h3>
+                    <p>Confused about upgrades, hosting, VPNs, or why your printer only works when threatened? I do strategy, not just fixes.</p>
+                </li>
+            </ul>
+        </section>
+        <section class="closing-section">
+            <p>I run TopherTech with equal parts expertise, sarcasm, and “try turning it off and on again” energy. Whether you're tech-savvy or tech-cursed, I’ll meet you where you're at—figuratively (and sometimes literally, if you’re local).</p>
+            <p>So if your computer sounds like a jet engine, your emails won’t sync, or your smart home became self-aware… hit me up. I’m probably already debugging something weird anyway.</p>
+            <p>Let’s make your tech stop sucking.</p>
+        </section>
+    </main>
     <div id="footer"></div>
-
+    <script src="script.js"></script>
+    <script src="/script.js"></script>
     <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
     <script>
-        AOS.init({ offset: 0 });
+        AOS.init();
     </script>
-
-    <script src="/script.js"></script>
-
     <script>
-        function loadHTML(url, elementId) {
-            fetch(url)
-                .then(response => {
-                    if (!response.ok) {
-                        throw new Error(`HTTP error! Status: ${response.status} while fetching ${url}`);
-                    }
-                    return response.text();
-                 })
-                .then(data => {
-                     const element = document.getElementById(elementId);
-                     if (element) {
-                        element.innerHTML = data;
-                        // Re-run header scripts if header was loaded
-                        if (elementId === 'header') {
-                             // Delay slightly ensures elements exist
-                             setTimeout(() => {
-                                try {
-                                     disableCurrentPageLink();
-                                 } catch (e) {
-                                    console.error("Error executing header scripts:", e);
-                                 }
-                             }, 0);
-                        }
-                     } else {
-                         console.error(`Element with ID '${elementId}' not found.`);
-                     }
-                 })
-                .catch(error => console.error(`Error loading ${url}:`, error));
-        }
+        fetch('/header.html')
+            .then(response => response.text())
+            .then(html => {
+                document.getElementById('header').innerHTML = html;
+            });
 
-        // Load header and footer when the DOM is ready
-        document.addEventListener('DOMContentLoaded', () => {
-             // Use absolute paths from root
-            loadHTML('/header.html', 'header');
-            loadHTML('/footer.html', 'footer');
-        });
+        fetch('/footer.html')
+            .then(response => response.text())
+            .then(html => {
+                document.getElementById('footer').innerHTML = html;
+            });
     </script>
-
 </body>
 </html>
