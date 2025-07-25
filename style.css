@@ -291,56 +291,6 @@ body {
 }
 
 /* Responsive Styles */
-@media (max-width: 768px) {
-    .nav-container .links {
-        display: none; /* Hide desktop links */
-    }
-    .hamburg {
-        display: block; /* Show hamburger icon */
-    }
-    /* Ensure dropdown is managed by JS, don't force display here */
-
-    .main-container {
-        padding: 20px 15px; /* Adjust padding */
-        min-height: auto; /* Allow height to adjust */
-        justify-content: flex-start; /* Align items to top */
-    }
-
-    .content {
-        width: 100%; /* Full width on smaller screens */
-        order: 1;
-        margin-bottom: 20px;
-    }
-    .social-links {
-        order: 2;
-        margin-bottom: 20px;
-    }
-    .image {
-        width: 90%; /* Adjust image container width */
-        max-width: 350px; /* Smaller max width */
-        order: 3;
-        margin-top: 0; /* Remove top margin if needed */
-    }
-    .gif-image {
-        width: 80%; /* Adjust gif size within container */
-    }
-
-    .content h1 {
-        font-size: 1.8em;
-    }
-    .typewriter {
-        font-size: 1.3em;
-    }
-    .content p {
-        font-size: 0.9rem;
-    }
-    .social-links a {
-        width: 40px;
-        height: 40px;
-        font-size: 1.2em;
-    }
-}
-
 /* Dashboard Styles */
 .dashboard-container {
     max-width: 1200px;
@@ -416,60 +366,7 @@ body {
 
 /* Responsive Styles */
 @media (max-width: 768px) {
-    .nav-container .links {
-        display: none;
-    }
-    
-    .hamburg {
-        display: block;
-    }
-
-    .main-container {
-        padding: 20px 15px;
-        min-height: auto;
-        justify-content: flex-start;
-    }
-
-    .content {
-        width: 100%;
-        order: 1;
-        margin-bottom: 20px;
-    }
-
-    .social-links {
-        order: 2;
-        margin-bottom: 20px;
-    }
-
-    .image {
-        width: 90%;
-        max-width: 350px;
-        order: 3;
-        margin-top: 0;
-    }
-
-    .gif-image {
-        width: 80%;
-    }
-
-    .content h1 {
-        font-size: 1.8em;
-    }
-
-    .typewriter {
-        font-size: 1.3em;
-    }
-
-    .content p {
-        font-size: 0.9rem;
-    }
-
-    .social-links a {
-        width: 40px;
-        height: 40px;
-        font-size: 1.2em;
-    }
-
+    /* mobile styles */
     .services-grid {
         grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
     }
