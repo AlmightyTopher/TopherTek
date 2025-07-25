@@ -25,7 +25,7 @@
                 <a href="/Links/contact-us/contact-us.html" id="contact-link" aria-label="Contact Us">Contact Us</a>
             </div>
         </div>
-        <i class="fa-solid fa-bars hamburg" onclick="toggleMenu()" aria-label="Open Menu"></i>
+        <i class="fa-solid fa-bars hamburg" aria-label="Open Menu"></i>
     </div>
     <div class="dropdown">
         <div class="links">
@@ -35,7 +35,7 @@
             <a href="/Links/services/services.html" id="dropdown-services-link" aria-label="Services">Services</a>
             <a href="/Links/blogs/blogs.html" id="dropdown-blogs-link" aria-label="Blogs">Blogs</a>
             <a href="/Links/contact-us/contact-us.html" id="dropdown-contact-link" aria-label="Contact Us">Contact Us</a>
-            <i class="fa-solid fa-xmark cancel" onclick="toggleMenu()" aria-label="Close Menu"></i>
+            <i class="fa-solid fa-xmark cancel" aria-label="Close Menu"></i>
         </div>
     </div>
 </nav>
@@ -73,8 +73,19 @@
         dropdown.style.transform = isOpen ? "translateY(-150%)" : "translateY(0px)";
     }
 
-    // Run when the header is loaded
-    setTimeout(() => {
-        disableCurrentPageLink();
-    }, 0);
+    // Add event listeners after the header is loaded
+    document.addEventListener('DOMContentLoaded', () => {
+        const hamburgIcon = document.querySelector(".hamburg");
+        const cancelIcon = document.querySelector(".cancel");
+
+        if (hamburgIcon) {
+            hamburgIcon.addEventListener('click', toggleMenu);
+        }
+        if (cancelIcon) {
+            cancelIcon.addEventListener('click', toggleMenu);
+        }
+
+        disableCurrentPageLink(); // Disable the current page link after loading
+    });
+
 </script>
