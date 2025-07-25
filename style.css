@@ -1,49 +1,66 @@
 /* style.css */
 
-/* Root variables for easy theme customization */
+/* Root variables for the Nerdy Theme */
 :root {
-    --primary-color: rgb(109, 67, 0);
-    --secondary-color: rgb(254, 215, 173);
-    --text-color: black;
-    --background-gradient: linear-gradient(to right, rgb(255,255,255), var(--secondary-color));
+    --primary-color: #00ff41; /* bright green */
+    --secondary-color: #051a05; /* dark green */
+    --text-color: #00ff41; /* bright green */
+    --background-color: #0a0a0a; /* near black */
+    --hover-text-color: #0a0a0a; /* black for hover states */
     --transition-speed: 0.2s;
 }
 
-/* Global reset and box-sizing for better layout handling */
+/* Global reset and box-sizing */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: 'Poppins', sans-serif; /* Ensure Poppins font is applied globally */
+    font-family: 'VT323', monospace, 'Courier New', Courier, monospace;
 }
 
 /* General styles */
 body {
-    background: var(--background-gradient);
-    overflow-x: hidden; /* Prevent horizontal scroll */
-    min-height: 100vh; /* Ensure body takes full viewport height */
+    background-color: var(--background-color);
+    color: var(--text-color);
+    text-shadow: 0 0 5px rgba(0, 255, 65, 0.7);
+    overflow-x: hidden;
+    min-height: 100vh;
 }
 
-/* --- Navigation (Common styles from header.html, included here for completeness if not using dynamic loading for style links) --- */
-/* NOTE: These nav styles are primarily controlled by header.html now */
+/* Animated Matrix Background */
+#matrix-bg {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1; /* Behind all content */
+    background-color: #000;
+}
+main, header, footer {
+    position: relative;
+    z-index: 2;
+}
+
+
+/* --- Navigation --- */
 .nav-container {
-    /* Styles are primarily in header.html */
-    /* Basic layout for fallback or if header isn't loaded */
     display: flex;
     justify-content: space-around;
     align-items: center;
     padding: 10px 20px;
-    background-color: #333; /* Example background */
-    color: white; /* Example text color */
-    position: sticky; /* Keep nav at the top */
+    background-color: rgba(10, 10, 10, 0.8);
+    backdrop-filter: blur(5px);
+    position: sticky;
     top: 0;
     z-index: 1000;
+    border-bottom: 1px solid var(--primary-color);
 }
 
 .logo {
     font-weight: bolder;
-    font-size: 1.5em; /* Match index.html */
-    color: var(--text-color); /* Use variable */
+    font-size: 1.5em;
+    color: var(--text-color);
     text-decoration: none;
 }
 
@@ -54,17 +71,17 @@ body {
 
 .nav-container .links {
     display: flex;
-    gap: 1rem; /* Adjust spacing as needed */
+    gap: 1rem;
     align-items: center;
 }
 
 .nav-container .links .link a {
-    color: white; /* Example color */
+    color: var(--text-color);
     text-decoration: none;
-    font-size: 1.1rem; /* Adjust as needed */
+    font-size: 1.1rem;
     font-weight: 500;
     transition: color var(--transition-speed) linear;
-    position: relative; /* Needed for the underline effect */
+    position: relative;
 }
 
 /* Underline Hover Effect */
@@ -74,7 +91,7 @@ body {
     bottom: -3px;
     left: 0;
     width: 0%;
-    height: 2px; /* Underline thickness */
+    height: 2px;
     background-color: var(--primary-color);
     transition: width var(--transition-speed) ease-in-out;
 }
@@ -84,221 +101,150 @@ body {
 }
 
 .nav-container .links .link a:hover {
-    color: var(--primary-color); /* Hover color */
+    text-shadow: 0 0 12px var(--primary-color);
 }
 
 /* Contact Button Style */
 .nav-container .links .contact-btn a {
     background-color: transparent;
-    padding: 8px 18px; /* Adjust padding */
-    border-radius: 20px;
+    padding: 8px 18px;
+    border-radius: 5px;
     border: 2px solid var(--primary-color);
-    color: var(--primary-color); /* Text color matches border */
+    color: var(--primary-color);
     transition: all var(--transition-speed) linear;
 }
 
 .nav-container .links .contact-btn a:hover {
     background-color: var(--primary-color);
-    color: white; /* Text color on hover */
-    border-color: var(--primary-color); /* Keep border color consistent */
+    color: var(--hover-text-color);
+    border-color: var(--primary-color);
 }
 
 /* Disabled Link Style */
 .nav-container .links .link a.disabled-link {
     color: grey;
-    pointer-events: none; /* Disable clicking */
+    pointer-events: none;
     cursor: default;
+    text-shadow: none;
 }
 .nav-container .links .link a.disabled-link::before {
-    width: 0; /* No hover effect */
+    width: 0;
 }
 
 /* Hamburger Menu Icon */
 .hamburg {
-    display: none; /* Hidden by default */
+    display: none;
     cursor: pointer;
     font-size: 1.8rem;
-    color: var(--primary-color); /* Match logo span color */
+    color: var(--primary-color);
 }
 
 /* Dropdown Menu */
 .dropdown {
-    display: none; /* Controlled by JS */
+    display: none;
     position: absolute;
-    top: 60px; /* Adjust based on nav height */
+    top: 60px;
     left: 0;
     width: 100%;
-    background-color: rgba(51, 51, 51, 0.9); /* Semi-transparent background */
+    background-color: rgba(10, 10, 10, 0.9);
     backdrop-filter: blur(5px);
     box-shadow: 0 4px 10px rgba(0,0,0,0.2);
     z-index: 999;
-    transform: translateY(-150%); /* Start hidden way above */
+    transform: translateY(-150%);
     transition: transform 0.3s ease-in-out;
-    overflow: hidden; /* Prevent content spill during animation */
+    overflow: hidden;
+    border-bottom: 1px solid var(--primary-color);
 }
+/* ... (rest of dropdown styles are mostly fine) ... */
 
-.dropdown .links {
-    display: flex;
-    flex-direction: column;
-    padding: 10px 0; /* Vertical padding */
-}
-
-.dropdown .links a {
-    color: white;
-    text-decoration: none;
-    padding: 12px 20px; /* Padding for touch targets */
-    text-align: center;
-    transition: background-color var(--transition-speed) linear;
-    font-size: 1.1rem;
-    position: relative; /* For disabled link */
-}
-.dropdown .links a.disabled-link {
-    color: grey;
-    pointer-events: none;
-    cursor: default;
-}
-
-.dropdown .links a:hover:not(.disabled-link) {
-    background-color: var(--primary-color); /* Hover background */
-}
-
-.cancel {
-    /* Styles are in header.html */
-    cursor: pointer;
-    position: absolute;
-    top: 15px;
-    right: 20px;
-    color: white;
-    font-size: 1.8rem;
-}
-/* --- End Navigation Styles --- */
-
-/* --- Main Container (Index Page Specific Adjustments) --- */
+/* --- Main Page Content --- */
 .main-container {
     display: flex;
-    flex-direction: column-reverse; /* Change order: Content first, then Image */
+    flex-direction: column-reverse;
     align-items: center;
     text-align: center;
     justify-content: center;
     width: 100%;
-    min-height: 90vh; /* Use remaining height below nav */
-    padding: 40px 20px; /* Add more padding top/bottom */
+    min-height: 90vh;
+    padding: 40px 20px;
 }
 
-/* Content Area */
-.content {
-    width: 90%;
-    max-width: 800px;
-    text-align: center;
-    color: var(--text-color);
-    order: 1; /* Ensure content comes first visually in the column */
-    margin-bottom: 30px; /* Add space below content (above image) */
+.content-box {
+    padding: 20px;
+    max-width: 900px;
+    margin: 2rem auto;
+    border: 2px solid var(--primary-color);
+    box-shadow: 0 0 15px var(--primary-color);
+    background-color: rgba(0, 20, 0, 0.85);
 }
 
 .content h1 {
-    font-size: clamp(2em, 5vw, 2.8em); /* Responsive font size */
-    margin-bottom: 10px; /* Space below h1 */
-    color: var(--text-color); /* Main text color */
+    font-size: clamp(2em, 5vw, 2.8em);
+    margin-bottom: 10px;
+    color: var(--text-color);
 }
 
 .content h1 span {
     color: var(--primary-color);
-    text-shadow: 0 0 8px rgba(109, 67, 0, 0.7); /* Softer shadow */
+    text-shadow: 0 0 8px var(--primary-color);
 }
 
 .typewriter {
-    font-size: clamp(1.2em, 3vw, 1.8em); /* Responsive font size */
+    font-size: clamp(1.2em, 3vw, 1.8em);
     font-weight: bold;
-    color: #333; /* Dark grey for contrast */
-    margin: 10px 0 20px 0; /* Adjust margins */
-    min-height: 1.5em; /* Prevent layout shift */
+    color: #eee;
+    margin: 10px 0 20px 0;
+    min-height: 1.5em;
 }
 
 .typewriter span {
-    color: var(--primary-color); /* Match h1 span */
-    /* text-shadow: 0 0 5px rgba(109, 67, 0, 0.7); */ /* Optional shadow */
+    color: var(--primary-color);
 }
 
 .content p {
-    font-size: clamp(0.9rem, 1.5vw, 1.1rem); /* Responsive font size */
-    margin-bottom: 30px; /* Space below paragraph */
-    line-height: 1.6; /* Improve readability */
+    font-size: clamp(0.9rem, 1.5vw, 1.1rem);
+    margin-bottom: 30px;
+    line-height: 1.6;
 }
 
-/* Social Links (Now above the image due to flex-direction: column-reverse) */
-.social-links {
-    order: 2; /* Place social links below main text content */
-    margin-bottom: 30px; /* Space below social links */
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 15px; /* Spacing between icons */
-    flex-wrap: wrap; /* Allow wrapping on smaller screens */
-}
-
+/* Social Links */
 .social-links a {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    width: 45px; /* Slightly smaller */
-    height: 45px; /* Slightly smaller */
+    width: 45px;
+    height: 45px;
     border-radius: 50%;
     border: 2px solid var(--primary-color);
-    font-size: 1.4em; /* Adjust icon size */
-    transition: transform 0.3s ease-in-out, background-color 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+    font-size: 1.4em;
+    transition: transform 0.3s, background-color 0.3s, box-shadow 0.3s;
     text-decoration: none;
+    color: var(--primary-color); /* All icons are green */
 }
-
-/* Original Social Link Colors */
-.social-links .fa-github { color: #333; } /* GitHub Grey/Black */
-.social-links .fa-facebook { color: #1877F2; } /* Facebook Blue */
-.social-links .fa-linkedin { color: #0077B5; } /* LinkedIn Blue */
-.social-links .fa-x-twitter { color: #000000; } /* Twitter/X Black */
-.social-links .fa-twitch { color: #9146FF; } /* Twitch Purple */
-.social-links .fa-youtube { color: #FF0000; } /* YouTube Red */
-.social-links .fa-instagram { color: #E1306C; } /* Instagram Pink */
-.social-links .fa-discord { color: #5865F2; } /* Discord Blue */
-.social-links .fa-tiktok { color: #000000; } /* TikTok Black */
 
 .social-links a:hover {
-    transform: scale(1.15); /* Slightly larger hover effect */
-    background-color: var(--primary-color); /* Background on hover */
-    box-shadow: 0 0 10px rgba(109, 67, 0, 0.7); /* Add shadow on hover */
+    transform: scale(1.15);
+    background-color: var(--primary-color);
+    box-shadow: 0 0 10px var(--primary-color);
 }
 .social-links a:hover i {
-     color: white; /* Icon color changes to white on hover */
+     color: var(--hover-text-color); /* Icon color changes on hover */
 }
 
-
-/* Image Area */
-.image {
-    width: 80%; /* Adjusted width for the container */
-    max-width: 450px; /* Max width for the image container */
-    height: auto; /* Auto height */
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    order: 3; /* Ensure image comes last visually */
-    margin-top: 20px; /* Space above image */
-}
-
+/* Image on main page */
 .gif-image {
-    width: 70%; /* Make the GIF slightly smaller within its container */
-    max-width: 100%; /* Ensure it doesn't exceed container */
-    height: auto;
-    object-fit: contain; /* Use contain to ensure aspect ratio is kept */
-    border-radius: 8px; /* Optional: slightly rounded corners */
+    border: 2px solid var(--primary-color);
+    box-shadow: 0 0 15px var(--primary-color);
+    border-radius: 8px;
 }
 
-/* Responsive Styles */
-/* Dashboard Styles */
-.dashboard-container {
-    max-width: 1200px;
-    margin: 0 auto;
+
+/* --- Dashboard & Services --- */
+.dashboard-container, .about-page, .services-page, .contact-page, .blogs-page {
     padding: 2rem;
 }
 
-.dashboard-container h1 {
+.dashboard-container h1, .about-page h1, .services-page h1, .contact-page h1, .blogs-page h1 {
     text-align: center;
     margin-bottom: 2rem;
     color: var(--primary-color);
@@ -308,70 +254,77 @@ body {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
     gap: 1.5rem;
-    padding: 1rem;
 }
 
 .service-card {
-    background: white;
-    border-radius: 10px;
+    background: var(--secondary-color);
+    border-radius: 5px;
     padding: 1.5rem;
     text-decoration: none;
     color: var(--text-color);
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 0 10px rgba(0, 255, 65, 0.3);
+    border: 1px solid var(--primary-color);
     transition: transform var(--transition-speed) ease;
 }
 
 .service-card:hover {
     transform: translateY(-5px);
+    box-shadow: 0 0 15px rgba(0, 255, 65, 0.7);
 }
 
-.service-icon-wrapper {
-    position: relative;
-    margin-bottom: 1rem;
+/* --- About Page Specifics --- */
+.terminal-window {
+    border: 2px solid var(--primary-color);
+    padding: 15px;
+    margin-bottom: 25px;
+    background-color: var(--secondary-color);
+    box-shadow: inset 0 0 10px rgba(0, 255, 65, 0.5);
 }
 
-.service-icon {
-    width: 64px;
-    height: 64px;
-    object-fit: contain;
-}
-
-.status-indicator {
-    position: absolute;
-    top: 0;
-    right: 0;
-    width: 12px;
-    height: 12px;
-    border-radius: 50%;
-    background-color: gray;
-}
-
-.status-indicator[data-status="online"] {
-    background-color: #4CAF50;
-}
-
-.status-indicator[data-status="offline"] {
-    background-color: #f44336;
-}
-
-.service-content h3 {
-    margin-bottom: 0.5rem;
+.terminal-window h2 {
     color: var(--primary-color);
+    margin-top: 0;
+    text-align: center;
+    border-bottom: 1px solid var(--primary-color);
+    padding-bottom: 10px;
 }
 
-.service-content p {
-    font-size: 0.9rem;
-    color: #666;
+pre.ascii-art {
+    color: var(--primary-color);
+    text-align: center;
+    font-size: 14px;
+    line-height: 1.2;
+    margin: 20px 0;
+    text-shadow: none;
+}
+
+.services-section ul {
+    list-style-type: none;
+    padding-left: 0;
+}
+
+.services-section li::before {
+    content: '>> ';
+    color: var(--primary-color);
+    font-weight: bold;
+}
+
+.services-section h3 {
+    color: var(--primary-color);
+    display: inline-block;
+}
+
+.closing-section p {
+    font-style: italic;
+    color: #9affab;
 }
 
 /* Responsive Styles */
 @media (max-width: 768px) {
-    /* mobile styles */
     .services-grid {
-        grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+        grid-template-columns: 1fr;
     }
-
-    .dashboard-container {
+    .main-container {
         padding: 1rem;
     }
 }

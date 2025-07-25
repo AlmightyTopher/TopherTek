@@ -8,34 +8,45 @@
     <link rel="stylesheet" href="/style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=VT323&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css">
 </head>
 <body>
+    <canvas id="matrix-bg"></canvas>
     <div id="header"></div>
 
-    <section>
-        <div class="main-container">
-            <div class="content">
-                <h1 data-aos="fade-left" data-aos-duration="1000" data-aos-delay="800">Services <span>TopherTek</span></h1>
-                <div class="typewriter" data-aos="fade-right" data-aos-duration="1000" data-aos-delay="900">I'm a <span id="typewriter-text"></span></div>
-                <p data-aos="flip-up" data-aos-duration="1000" data-aos-delay="1000">I specialize in solving tech problems, developing innovative solutions, and helping businesses with IT and web development needs.</p>
-                <div class="social-links">
-                    <a href="https://github.com/" class="github" data-aos="fade-up" data-aos-delay="100" aria-label="GitHub"><i class="fa-brands fa-github"></i></a>
-                    <a href="https://facebook.com/" class="facebook" data-aos="fade-up" data-aos-delay="200" aria-label="Facebook"><i class="fa-brands fa-facebook"></i></a>
-                    <a href="https://linkedin.com/in/" class="linkedin" data-aos="fade-up" data-aos-delay="300" aria-label="LinkedIn"><i class="fa-brands fa-linkedin"></i></a>
-                    <a href="https://twitter.com/" class="twitter" data-aos="fade-up" data-aos-delay="400" aria-label="Twitter"><i class="fa-brands fa-x-twitter"></i></a>
-                    <a href="https://www.twitch.tv/" class="twitch" data-aos="fade-up" data-aos-delay="500" aria-label="Twitch"><i class="fa-brands fa-twitch"></i></a>
-                    <a href="https://www.youtube.com/c/" class="youtube" data-aos="fade-up" data-aos-delay="600" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a>
-                    <a href="https://www.instagram.com/" class="instagram" data-aos="fade-up" data-aos-delay="700" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
-                    <a href="https://discord.gg/yourlink" class="discord" data-aos="fade-up" data-aos-delay="800" aria-label="Discord"><i class="fa-brands fa-discord"></i></a>
+    <main class="services-page">
+        <div class="content-box terminal-window" data-aos="fade-in">
+            <h1>Services <span>TopherTek</span></h1>
+            <p>// A list of available exploits... I mean, services.</p>
+            <div class="services-grid">
+                <div class="service-card" data-aos="fade-up" data-aos-delay="100">
+                    <h3>Computer Repair & Optimization</h3>
+                    <p>Speed up, clean up, or bring back machines from the dead (no seances required—just safe mode and some grit).</p>
+                </div>
+                <div class="service-card" data-aos="fade-up" data-aos-delay="200">
+                    <h3>Custom PC Building</h3>
+                    <p>Need a beast for gaming, streaming, AI, or running 46 Chrome tabs with YouTube playing in the background? I’ll build it. RGB included, because performance glows matter.</p>
+                </div>
+                <div class="service-card" data-aos="fade-up" data-aos-delay="300">
+                    <h3>Smart Home Setup & Automation</h3>
+                    <p>From lights that obey voice commands to automating your AC like a nerdy wizard—if it plugs in and has an app, I’ll make it behave.</p>
+                </div>
+                <div class="service-card" data-aos="fade-up" data-aos-delay="400">
+                    <h3>Small Business Tech Support</h3>
+                    <p>I’ll keep your POS from acting like one. Full-stack support without the corporate nonsense.</p>
+                </div>
+                <div class="service-card" data-aos="fade-up" data-aos-delay="500">
+                    <h3>Web & Script Services</h3>
+                    <p>Need a quick website, automation scripts, or a bot to remind you to drink water and touch grass? I code that.</p>
+                </div>
+                <div class="service-card" data-aos="fade-up" data-aos-delay="600">
+                    <h3>Tech Consultation</h3>
+                    <p>Confused about upgrades, hosting, VPNs, or why your printer only works when threatened? I do strategy, not just fixes.</p>
                 </div>
             </div>
-            <div class="image" data-aos="zoom-in-right" data-aos-duration="2500">
-                <img src="/your-gif.gif" alt="Animated GIF" class="gif-image">
-            </div>
         </div>
-    </section>
+    </main>
 
     <div id="footer"></div>
 
@@ -45,7 +56,48 @@
     </script>
 
     <script src="/script.js"></script>
+    <script>
+        // Matrix Rain Effect
+        const canvas = document.getElementById('matrix-bg');
+        const ctx = canvas.getContext('2d');
 
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+
+        const katakana = 'アァカサタナハマヤャラワガザダバパイィキシチニヒミリヰギジヂビピウゥクスツヌフムユュルグズブプエェケセテネヘメレヱゲゼデベペオォコソトノホモヨョロヲゴゾドボポヴッン';
+        const latin = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+        const nums = '0123456789';
+        const alphabet = katakana + latin + nums;
+
+        const fontSize = 16;
+        const columns = canvas.width / fontSize;
+
+        const rainDrops = [];
+
+        for (let x = 0; x < columns; x++) {
+            rainDrops[x] = 1;
+        }
+
+        const draw = () => {
+            ctx.fillStyle = 'rgba(0, 0, 0, 0.05)';
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+            ctx.fillStyle = '#0F0';
+            ctx.font = fontSize + 'px monospace';
+
+            for (let i = 0; i < rainDrops.length; i++) {
+                const text = alphabet.charAt(Math.floor(Math.random() * alphabet.length));
+                ctx.fillText(text, i * fontSize, rainDrops[i] * fontSize);
+
+                if (rainDrops[i] * fontSize > canvas.height && Math.random() > 0.975) {
+                    rainDrops[i] = 0;
+                }
+                rainDrops[i]++;
+            }
+        };
+
+        const matrixInterval = setInterval(draw, 33);
+    </script>
     <script>
         function loadHTML(url, elementId) {
             fetch(url)

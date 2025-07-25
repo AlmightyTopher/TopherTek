@@ -5,8 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>About - TopherTech</title>
     <link rel="stylesheet" href="/style.css">
-    <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="nerdy-style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=VT323&display=swap" rel="stylesheet">
@@ -15,9 +13,9 @@
 <body>
     <canvas id="matrix-bg"></canvas>
     <div id="header"></div>
-    <main class="about-page nerd-container">
+    <main class="about-page">
         <section class="about-section terminal-window">
-            <h1 id="typing-effect">About TopherTech</h1>
+            <h1>About TopherTech</h1>
             <pre class="ascii-art">
   _   _   _   _   _   _   _   _   _   _  
  / \ / \ / \ / \ / \ / \ / \ / \ / \ / \ 
@@ -63,12 +61,13 @@
         </section>
     </main>
     <div id="footer"></div>
-    <script src="script.js"></script>
-    <script src="/script.js"></script>
     <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
     <script>
         AOS.init();
-
+    </script>
+    <script src="/script.js"></script>
+    <script>
+        // Matrix Rain Effect
         const canvas = document.getElementById('matrix-bg');
         const ctx = canvas.getContext('2d');
 
@@ -107,20 +106,41 @@
             }
         };
 
-        setInterval(draw, 30);
+        const matrixInterval = setInterval(draw, 33);
     </script>
     <script>
-        fetch('/header.html')
-            .then(response => response.text())
-            .then(html => {
-                document.getElementById('header').innerHTML = html;
-            });
+        function loadHTML(url, elementId) {
+            fetch(url)
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error(`HTTP error! Status: ${response.status} while fetching ${url}`);
+                    }
+                    return response.text();
+                })
+                .then(data => {
+                    const element = document.getElementById(elementId);
+                    if (element) {
+                        element.innerHTML = data;
+                        if (elementId === 'header') {
+                            setTimeout(() => {
+                                try {
+                                    disableCurrentPageLink();
+                                } catch (e) {
+                                    console.error("Error executing header scripts:", e);
+                                }
+                            }, 0);
+                        }
+                    } else {
+                        console.error(`Element with ID '${elementId}' not found.`);
+                    }
+                })
+                .catch(error => console.error(`Error loading ${url}:`, error));
+        }
 
-        fetch('/footer.html')
-            .then(response => response.text())
-            .then(html => {
-                document.getElementById('footer').innerHTML = html;
-            });
+        document.addEventListener('DOMContentLoaded', () => {
+            loadHTML('/header.html', 'header');
+            loadHTML('/footer.html', 'footer');
+        });
     </script>
 </body>
 </html>

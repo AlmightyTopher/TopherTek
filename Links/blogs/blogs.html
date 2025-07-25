@@ -8,42 +8,27 @@
     <link rel="stylesheet" href="/style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=VT323&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css">
 </head>
 <body>
+    <canvas id="matrix-bg"></canvas>
     <div id="header"></div>
 
-    <section>
-        <div class="main-container">
-            <div class="image" data-aos="zoom-in-right" data-aos-duration="2500">
-                <img src="/your-gif.gif" alt="Animated GIF" class="gif-image">
-            </div>
-
-            <div class="content">
-                <h1 data-aos="fade-left" data-aos-duration="1000" data-aos-delay="800">
-                    Blogs <span>TopherTek</span>
-                </h1>
-                <div class="typewriter" data-aos="fade-right" data-aos-duration="1000" data-aos-delay="900">
-                    I'm a <span id="typewriter-text"></span>
-                </div>
-                <p data-aos="flip-up" data-aos-duration="1000" data-aos-delay="1000">
-                    I specialize in solving tech problems, developing innovative solutions, and helping businesses with IT and web development needs.
-                </p>
-
-                <div class="social-links">
-                    <a href="https://github.com/" class="github" data-aos="fade-up" data-aos-delay="100" aria-label="GitHub"><i class="fa-brands fa-github"></i></a>
-                    <a href="https://facebook.com/" class="facebook" data-aos="fade-up" data-aos-delay="200" aria-label="Facebook"><i class="fa-brands fa-facebook"></i></a>
-                    <a href="https://linkedin.com/in/" class="linkedin" data-aos="fade-up" data-aos-delay="300" aria-label="LinkedIn"><i class="fa-brands fa-linkedin"></i></a>
-                    <a href="https://twitter.com/" class="twitter" data-aos="fade-up" data-aos-delay="400" aria-label="Twitter"><i class="fa-brands fa-x-twitter"></i></a>
-                    <a href="https://www.twitch.tv/" class="twitch" data-aos="fade-up" data-aos-delay="500" aria-label="Twitch"><i class="fa-brands fa-twitch"></i></a>
-                    <a href="https://www.youtube.com/c/" class="youtube" data-aos="fade-up" data-aos-delay="600" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a>
-                    <a href="https://www.instagram.com/" class="instagram" data-aos="fade-up" data-aos-delay="700" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
-                    <a href="https://discord.gg/yourlink" class="discord" data-aos="fade-up" data-aos-delay="800" aria-label="Discord"><i class="fa-brands fa-discord"></i></a>
-                </div>
-            </div>
+    <main class="blogs-page">
+        <div class="content-box" data-aos="fade-in">
+            <h1>Blogs <span>TopherTek</span></h1>
+            <p>// Tech insights, project logs, and random musings from the command line of my brain.</p>
+            <p>Coming soon... once I debug my content pipeline.</p>
+            <pre class="ascii-art" style="text-align: left; font-size: 12px;">
+_
+| |__   __ _ ___  __ _
+| '_ \ / _` / __|/ _` |
+| |_) | (_| \__ \ (_| |
+|_.__/ \__,_|___/\__,_|
+            </pre>
         </div>
-    </section>
+    </main>
 
     <div id="footer"></div>
 
@@ -53,7 +38,48 @@
     </script>
 
     <script src="/script.js"></script>
+    <script>
+        // Matrix Rain Effect
+        const canvas = document.getElementById('matrix-bg');
+        const ctx = canvas.getContext('2d');
 
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+
+        const katakana = 'アァカサタナハマヤャラワガザダバパイィキシチニヒミリヰギジヂビピウゥクスツヌフムユュルグズブプエェケセテネヘメレヱゲゼデベペオォコソトノホモヨョロヲゴゾドボポヴッン';
+        const latin = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+        const nums = '0123456789';
+        const alphabet = katakana + latin + nums;
+
+        const fontSize = 16;
+        const columns = canvas.width / fontSize;
+
+        const rainDrops = [];
+
+        for (let x = 0; x < columns; x++) {
+            rainDrops[x] = 1;
+        }
+
+        const draw = () => {
+            ctx.fillStyle = 'rgba(0, 0, 0, 0.05)';
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+            ctx.fillStyle = '#0F0';
+            ctx.font = fontSize + 'px monospace';
+
+            for (let i = 0; i < rainDrops.length; i++) {
+                const text = alphabet.charAt(Math.floor(Math.random() * alphabet.length));
+                ctx.fillText(text, i * fontSize, rainDrops[i] * fontSize);
+
+                if (rainDrops[i] * fontSize > canvas.height && Math.random() > 0.975) {
+                    rainDrops[i] = 0;
+                }
+                rainDrops[i]++;
+            }
+        };
+
+        const matrixInterval = setInterval(draw, 33);
+    </script>
     <script>
         function loadHTML(url, elementId) {
             fetch(url)
