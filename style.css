@@ -160,7 +160,7 @@ main, header, footer {
 /* --- Main Page Content --- */
 .main-container {
     display: flex;
-    flex-direction: column-reverse;
+    flex-direction: column;
     align-items: center;
     text-align: center;
     justify-content: center;
@@ -231,11 +231,25 @@ main, header, footer {
      color: var(--hover-text-color); /* Icon color changes on hover */
 }
 
+/* GIF container */
+.gif-container {
+    padding: 20px;
+    border: 2px solid var(--primary-color);
+    box-shadow: 0 0 15px var(--primary-color);
+    background-color: rgba(0, 20, 0, 0.85);
+    margin-top: 2rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 /* Image on main page */
 .gif-image {
     border: 2px solid var(--primary-color);
     box-shadow: 0 0 15px var(--primary-color);
     border-radius: 8px;
+    max-width: 300px;
+    width: 100%;
 }
 
 
@@ -326,5 +340,21 @@ pre.ascii-art {
     }
     .main-container {
         padding: 1rem;
+    }
+}
+
+/* Responsive layout for main content */
+@media (min-width: 769px) {
+    .main-container {
+        flex-direction: row;
+        justify-content: space-around;
+        align-items: flex-start;
+        gap: 2rem;
+    }
+
+    .content, .gif-container {
+        flex: 1;
+        max-width: 45%;
+        margin-top: 0;
     }
 }

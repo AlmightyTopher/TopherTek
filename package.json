@@ -4,7 +4,7 @@
   "description": "A placeholder package for the website",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "live-server"
   },
   "repository": {
     "type": "git",
@@ -19,6 +19,7 @@
   "homepage": "https://github.com/AlmightyTopher/TopherTek#readme",
   "dependencies": {
     "crypto": "^1.0.1",
-    "fs": "^0.0.1-security"
+    "fs": "^0.0.1-security",
+    "live-server": "^1.2.2"
   }
 }
