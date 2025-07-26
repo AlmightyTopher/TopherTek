@@ -158,39 +158,51 @@ main, header, footer {
 /* ... (rest of dropdown styles are mostly fine) ... */
 
 /* --- Main Page Content --- */
-.main-section {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: calc(100vh - 120px); /* Adjust for header/footer */
+.center-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 6vh 2rem;
+  gap: 2rem;
+  text-align: center;
 }
 
-.content-wrapper {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-    justify-content: center;
-    width: 100%;
-    padding: 20px;
+.hero-box,
+.logo-box {
+  max-width: 700px;
+  width: 100%;
+  padding: 20px;
+  border: 2px solid var(--primary-color);
+  box-shadow: 0 0 15px var(--primary-color);
+  background-color: rgba(0, 20, 0, 0.85);
 }
 
-.content-box {
-    padding: 20px;
-    max-width: 900px;
-    margin: 1rem auto;
-    border: 2px solid var(--primary-color);
-    box-shadow: 0 0 15px var(--primary-color);
-    background-color: rgba(0, 20, 0, 0.85);
+img[src*="your-gif.gif"] {
+  max-width: 100%;
+  height: auto;
+  object-fit: contain;
+  border-radius: 50%;
+  display: block;
+  margin: 0 auto;
 }
 
-.content h1 {
+.gif-caption {
+  color: #00ff00;
+  background-color: rgba(0, 0, 0, 0.6);
+  padding: 0.5rem 1rem;
+  margin-top: 1rem;
+  border-radius: 10px;
+  text-shadow: 0 0 6px black, 0 0 10px lime;
+  font-weight: bold;
+}
+
+.hero-box h1 {
     font-size: clamp(2.5em, 6vw, 3.5em);
     margin-bottom: 10px;
     color: var(--text-color);
 }
 
-.content h1 span {
+.hero-box h1 span {
     color: var(--primary-color);
     text-shadow: 0 0 8px var(--primary-color);
 }
@@ -207,7 +219,7 @@ main, header, footer {
     color: var(--primary-color);
 }
 
-.content p {
+.hero-box p {
     font-size: clamp(0.9rem, 1.5vw, 1.1rem);
     margin-bottom: 30px;
     line-height: 1.6;
@@ -236,42 +248,6 @@ main, header, footer {
 .social-links a:hover i {
      color: var(--hover-text-color); /* Icon color changes on hover */
 }
-
-/* GIF container */
-.gif-container {
-    padding: 20px;
-    border: 2px solid var(--primary-color);
-    box-shadow: 0 0 15px var(--primary-color);
-    background-color: rgba(0, 20, 0, 0.85);
-    margin-top: 2rem;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    position: relative;
-}
-
-.gif-overlay {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 255, 65, 0.1);
-    z-index: 1;
-}
-
-/* Image on main page */
-.gif-image {
-    border: 2px solid var(--primary-color);
-    box-shadow: 0 0 15px var(--primary-color);
-    border-radius: 8px;
-    max-width: 300px;
-    width: 100%;
-    object-fit: contain;
-    position: relative;
-    z-index: 2;
-}
-
 
 /* --- Dashboard & Services --- */
 .dashboard-container, .about-page, .services-page, .contact-page, .blogs-page {
@@ -358,26 +334,7 @@ pre.ascii-art {
     .services-grid {
         grid-template-columns: 1fr;
     }
-    .content-wrapper {
+    .center-wrapper {
         padding: 1rem;
-    }
-    .main-section {
-        min-height: calc(100vh - 100px);
-    }
-}
-
-/* Responsive layout for main content */
-@media (min-width: 769px) {
-    .content-wrapper {
-        flex-direction: row;
-        justify-content: space-around;
-        align-items: flex-start;
-        gap: 2rem;
-    }
-
-    .content-box, .gif-container {
-        flex: 1;
-        max-width: 45%;
-        margin-top: 0;
     }
 }

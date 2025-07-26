@@ -15,29 +15,28 @@
     <canvas id="matrix-bg"></canvas>
     <div id="header"></div>
 
-    <section class="main-section">
-        <div class="content-wrapper">
-            <div class="content content-box" data-aos="fade-left" data-aos-duration="1000" data-aos-delay="800">
-                <h1>Hey I'm <span>TopherTek</span></h1>
-                <div class="typewriter" data-aos="fade-right" data-aos-duration="1000" data-aos-delay="900">I'm a <span id="typewriter-text"></span></div>
-                <p data-aos="flip-up" data-aos-duration="1000" data-aos-delay="1000">I specialize in solving tech problems, developing innovative solutions, and helping businesses with IT and web development needs.</p>
-                <div class="social-links">
-                    <a href="https://github.com/" class="github" data-aos="fade-up" data-aos-delay="100" aria-label="GitHub"><i class="fa-brands fa-github"></i></a>
-                    <a href="https://facebook.com/" class="facebook" data-aos="fade-up" data-aos-delay="200" aria-label="Facebook"><i class="fa-brands fa-facebook"></i></a>
-                    <a href="https://linkedin.com/in/" class="linkedin" data-aos="fade-up" data-aos-delay="300" aria-label="LinkedIn"><i class="fa-brands fa-linkedin"></i></a>
-                    <a href="https://twitter.com/" class="twitter" data-aos="fade-up" data-aos-delay="400" aria-label="Twitter"><i class="fa-brands fa-x-twitter"></i></a>
-                    <a href="https://www.twitch.tv/" class="twitch" data-aos="fade-up" data-aos-delay="500" aria-label="Twitch"><i class="fa-brands fa-twitch"></i></a>
-                    <a href="https://www.youtube.com/c/" class="youtube" data-aos="fade-up" data-aos-delay="600" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a>
-                    <a href="https://www.instagram.com/" class="instagram" data-aos="fade-up" data-aos-delay="700" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
-                    <a href="https://discord.gg/yourlink" class="discord" data-aos="fade-up" data-aos-delay="800" aria-label="Discord"><i class="fa-brands fa-discord"></i></a>
-                </div>
-            </div>
-            <div class="gif-container" data-aos="zoom-in-right" data-aos-duration="2500">
-                <div class="gif-overlay"></div>
-                <img src="/your-gif.gif" alt="Animated GIF" class="gif-image">
+    <div class="center-wrapper">
+        <div class="logo-box">
+            <img src="your-gif.gif" alt="TopherTek">
+            <div class="gif-caption">Restarting your computer for you since The Y2K!</div>
+        </div>
+
+        <div class="hero-box" data-aos="fade-left" data-aos-duration="1000" data-aos-delay="800">
+            <h1>Hey I'm <span>TopherTek</span></h1>
+            <div class="typewriter" data-aos="fade-right" data-aos-duration="1000" data-aos-delay="900">I'm a <span id="typewriter-text"></span></div>
+            <p data-aos="flip-up" data-aos-duration="1000" data-aos-delay="1000">I specialize in solving tech problems, developing innovative solutions, and helping businesses with IT and web development needs.</p>
+            <div class="social-links">
+                <a href="https://github.com/" class="github" data-aos="fade-up" data-aos-delay="100" aria-label="GitHub"><i class="fa-brands fa-github"></i></a>
+                <a href="https://facebook.com/" class="facebook" data-aos="fade-up" data-aos-delay="200" aria-label="Facebook"><i class="fa-brands fa-facebook"></i></a>
+                <a href="https://linkedin.com/in/" class="linkedin" data-aos="fade-up" data-aos-delay="300" aria-label="LinkedIn"><i class="fa-brands fa-linkedin"></i></a>
+                <a href="https://twitter.com/" class="twitter" data-aos="fade-up" data-aos-delay="400" aria-label="Twitter"><i class="fa-brands fa-x-twitter"></i></a>
+                <a href="https://www.twitch.tv/" class="twitch" data-aos="fade-up" data-aos-delay="500" aria-label="Twitch"><i class="fa-brands fa-twitch"></i></a>
+                <a href="https://www.youtube.com/c/" class="youtube" data-aos="fade-up" data-aos-delay="600" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a>
+                <a href="https://www.instagram.com/" class="instagram" data-aos="fade-up" data-aos-delay="700" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+                <a href="https://discord.gg/yourlink" class="discord" data-aos="fade-up" data-aos-delay="800" aria-label="Discord"><i class="fa-brands fa-discord"></i></a>
             </div>
         </div>
-    </section>
+    </div>
 
     <div id="footer"></div>
 
@@ -54,7 +53,7 @@
         canvas.width = window.innerWidth;
         canvas.height = window.innerHeight;
 
-        const katakana = 'アァカサタナハマヤャラワガザダバパイィキシチニヒミリヰギジヂビピウゥクスツヌフムユュルグズブプエェケセテネヘメレヱゲゼデベペオォコソトノホモヨョロヲゴゾドボポヴッン';
+        const katakana = 'アァカサタナハマヤャラワガザダバパイィキシチニヒミリヰギジヂビピウゥクスツヌフムユュルグズブプエェケセテネヘメレヱゲゼデベペオォコソトノホモヨョロヲゴゾドボпоヴッン';
         const latin = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
         const nums = '0123456789';
         const alphabet = katakana + latin + nums;
