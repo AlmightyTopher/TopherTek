@@ -1,0 +1,25 @@
+/**
+ * Skills page specific styles
+ */
+
+.skills-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+}
+
+.skill-category h3 {
+    border-bottom: 1px solid var(--primary-color);
+    padding-bottom: 5px;
+    margin-bottom: 10px;
+}
+
+.skill-category ul {
+    list-style-type: none;
+    padding-left: 0;
+}
+
+.skill-category li::before {
+    content: '>> ';
+    color: var(--primary-color);
+}

@@ -1,0 +1,31 @@
+/**
+ * Contact page specific styles
+ */
+
+.contact-page form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.contact-page label {
+    font-weight: bold;
+}
+
+.contact-page input,
+.contact-page textarea,
+.contact-page button {
+    background-color: var(--secondary-color);
+    color: var(--text-color);
+    border: 1px solid var(--primary-color);
+    padding: 10px;
+    font-family: 'VT323', monospace;
+}
+
+.contact-page button {
+    cursor: pointer;
+    background-color: var(--primary-color);
+    color: var(--hover-text-color);
+    border: none;
+    font-weight: bold;
+}
