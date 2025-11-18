@@ -17,9 +17,7 @@
     "url": "https://github.com/AlmightyTopher/TopherTek/issues"
   },
   "homepage": "https://github.com/AlmightyTopher/TopherTek#readme",
-  "dependencies": {
-    "crypto": "^1.0.1",
-    "fs": "^0.0.1-security",
+  "devDependencies": {
     "live-server": "^1.2.2"
   }
 }

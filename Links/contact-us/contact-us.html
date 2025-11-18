@@ -6,6 +6,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css">
     <title>Contact Us - TopherTek</title>
     <link rel="stylesheet" href="/style.css">
+    <link rel="stylesheet" href="/css/contact.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=VT323&display=swap" rel="stylesheet">
@@ -19,36 +20,18 @@
         <div class="content-box terminal-window" data-aos="fade-in">
             <h1>Contact <span>TopherTek</span></h1>
             <p>// Got a tech emergency? Or just want to talk nerd? Send a signal.</p>
-            <form action="https://formspree.io/f/yourformid" method="POST">
+            <form action="https://formspree.io/f/<FORM_ID>" method="POST">
                 <label for="name">Name:</label>
                 <input type="text" id="name" name="name" required>
-                
+
                 <label for="email">Email:</label>
                 <input type="email" id="email" name="email" required>
-                
+
                 <label for="message">Message:</label>
                 <textarea id="message" name="message" rows="5" required></textarea>
-                
+
                 <button type="submit">Transmit</button>
             </form>
-            <style>
-                form { display: flex; flex-direction: column; gap: 10px; }
-                label { font-weight: bold; }
-                input, textarea, button { 
-                    background-color: var(--secondary-color);
-                    color: var(--text-color);
-                    border: 1px solid var(--primary-color);
-                    padding: 10px;
-                    font-family: 'VT323', monospace;
-                }
-                button {
-                    cursor: pointer;
-                    background-color: var(--primary-color);
-                    color: var(--hover-text-color);
-                    border: none;
-                    font-weight: bold;
-                }
-            </style>
         </div>
     </main>
 
@@ -58,83 +41,8 @@
     <script>
         AOS.init({ offset: 0 });
     </script>
-
+    <script src="/js/matrix.js"></script>
+    <script src="/js/utils.js"></script>
     <script src="/script.js"></script>
-    <script>
-        // Matrix Rain Effect
-        const canvas = document.getElementById('matrix-bg');
-        const ctx = canvas.getContext('2d');
-
-        canvas.width = window.innerWidth;
-        canvas.height = window.innerHeight;
-
-        const katakana = 'アァカサタナハマヤャラワガザダバパイィキシチニヒミリヰギジヂビピウゥクスツヌフムユュルグズブプエェケセテネヘメレヱゲゼデベペオォコソトノホモヨョロヲゴゾドボポヴッン';
-        const latin = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
-        const nums = '0123456789';
-        const alphabet = katakana + latin + nums;
-
-        const fontSize = 16;
-        const columns = canvas.width / fontSize;
-
-        const rainDrops = [];
-
-        for (let x = 0; x < columns; x++) {
-            rainDrops[x] = 1;
-        }
-
-        const draw = () => {
-            ctx.fillStyle = 'rgba(0, 0, 0, 0.05)';
-            ctx.fillRect(0, 0, canvas.width, canvas.height);
-
-            ctx.fillStyle = '#0F0';
-            ctx.font = fontSize + 'px monospace';
-
-            for (let i = 0; i < rainDrops.length; i++) {
-                const text = alphabet.charAt(Math.floor(Math.random() * alphabet.length));
-                ctx.fillText(text, i * fontSize, rainDrops[i] * fontSize);
-
-                if (rainDrops[i] * fontSize > canvas.height && Math.random() > 0.975) {
-                    rainDrops[i] = 0;
-                }
-                rainDrops[i]++;
-            }
-        };
-
-        const matrixInterval = setInterval(draw, 33);
-    </script>
-    <script>
-        function loadHTML(url, elementId) {
-            fetch(url)
-                .then(response => {
-                    if (!response.ok) {
-                        throw new Error(`HTTP error! Status: ${response.status} while fetching ${url}`);
-                    }
-                    return response.text();
-                })
-                .then(data => {
-                    const element = document.getElementById(elementId);
-                    if (element) {
-                        element.innerHTML = data;
-                        if (elementId === 'header') {
-                            setTimeout(() => {
-                                try {
-                                    disableCurrentPageLink();
-                                } catch (e) {
-                                    console.error("Error executing header scripts:", e);
-                                }
-                            }, 0);
-                        }
-                    } else {
-                        console.error(`Element with ID '${elementId}' not found.`);
-                    }
-                })
-                .catch(error => console.error(`Error loading ${url}:`, error));
-        }
-
-        document.addEventListener('DOMContentLoaded', () => {
-            loadHTML('/header.html', 'header');
-            loadHTML('/footer.html', 'footer');
-        });
-    </script>
 </body>
 </html>
